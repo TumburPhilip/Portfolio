@@ -1,0 +1,4714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tumbur S. Philip - Brand Visual Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;1,9..144,200;1,9..144,300&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111;
+      --bg3: #191919;
+      --white: #f4f1eb;
+      --cream: #e8e3d8;
+      --accent: #ffdc00;
+      --grey: #5a5a5a;
+      --grey2: #2e2e2e;
+      --border: rgba(255, 255, 255, .07);
+      --r: 14px;
+      --max: 1160px;
+    }
+
+    body.resume-theme {
+      --bg: #ecebee;
+      --bg2: #e0e0e0;
+      --bg3: #d5d5d5;
+      --white: #323b4c;
+      --cream: #3a4559;
+      --accent: #323b4c;
+      --grey: #6b7a99;
+      --grey2: #b5b5b5;
+      --border: rgba(50, 59, 76, 0.15);
+    }
+
+    body.resume-theme nav.scrolled {
+      background: rgba(236, 235, 238, 0.9);
+    }
+
+    body.resume-theme .btn-dark {
+      background: var(--white);
+      color: var(--bg);
+    }
+
+    /* Resume Theme Contrast Overrides */
+    body.resume-theme .nav-cta:not([style]),
+    body.resume-theme .btn-p,
+    body.resume-theme .form-submit,
+    body.resume-theme #transition-text {
+      color: var(--bg) !important;
+    }
+
+    body.resume-theme .cta-h {
+      color: var(--bg);
+    }
+
+    body.resume-theme .cta-ey {
+      color: rgba(236, 235, 238, 0.7);
+    }
+
+    body.resume-theme .cta::before {
+      color: rgba(236, 235, 238, 0.08);
+    }
+
+    body.resume-theme .btn-outline {
+      border-color: rgba(236, 235, 238, 0.4);
+      color: var(--bg);
+    }
+
+    body.resume-theme .btn-outline:hover {
+      background: rgba(236, 235, 238, 0.15);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      cursor: none
+    }
+
+    /* PAGE SYSTEM */
+    .page {
+      display: none;
+      min-height: 100vh
+    }
+
+    .page.active {
+      display: block
+    }
+
+    /* CURSOR */
+    #cur {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: exclusion;
+      transition: width .25s, height .25s
+    }
+
+    #cur-ring {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 220, 0, .35);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width .4s, height .4s
+    }
+
+    body.hov #cur {
+      width: 18px;
+      height: 18px
+    }
+
+    body.hov #cur-ring {
+      width: 60px;
+      height: 60px;
+      border-color: rgba(255, 220, 0, .12)
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 8000;
+      opacity: .25;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E")
+    }
+
+    #prog {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: var(--accent);
+      z-index: 700;
+      width: 0%;
+      transition: width .08s linear
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 500;
+      padding: 22px 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .4s, border-color .4s;
+      border-bottom: 1px solid transparent
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 10, .9);
+      border-color: var(--border);
+      backdrop-filter: blur(24px)
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -.02em;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: none
+    }
+
+    .logo-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: breathe 2.5s ease infinite;
+      flex-shrink: 0
+    }
+
+    @keyframes breathe {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
+
+      50% {
+        transform: scale(1.8);
+        opacity: .4
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--grey);
+      text-decoration: none;
+      cursor: none;
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+      transition: color .2s, border-color .2s
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
+      border-color: var(--accent)
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 11px 24px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      text-decoration: none;
+      font-family: 'Syne', sans-serif;
+      transition: background .2s, transform .15s;
+      cursor: none
+    }
+
+    .nav-cta:hover {
+      background: var(--cream);
+      transform: scale(1.04)
+    }
+
+    /* BUTTONS */
+    .btn-p {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 15px 36px;
+      border-radius: 100px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: none;
+      transition: background .2s
+    }
+
+    .btn-p:hover {
+      background: var(--cream)
+    }
+
+    .btn-g {
+      border: 1px solid var(--border);
+      color: var(--grey);
+      padding: 15px 36px;
+      border-radius: 100px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      text-decoration: none;
+      display: inline-block;
+      cursor: none;
+      transition: border-color .2s, color .2s
+    }
+
+    .btn-g:hover {
+      border-color: rgba(255, 255, 255, .4);
+      color: var(--white)
+    }
+
+    .btn-dark {
+      background: #0e0e0e;
+      color: var(--accent);
+      padding: 16px 42px;
+      border-radius: 100px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      text-decoration: none;
+      cursor: none;
+      transition: background .2s
+    }
+
+    .btn-dark:hover {
+      background: #1c1c1c
+    }
+
+    .btn-outline {
+      border: 2px solid rgba(0, 0, 0, .25);
+      color: #0a0a0a;
+      padding: 16px 42px;
+      border-radius: 100px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      text-decoration: none;
+      cursor: none;
+      transition: background .2s
+    }
+
+    .btn-outline:hover {
+      background: rgba(0, 0, 0, .08)
+    }
+
+    /* MARQUEE */
+    .mq-wrap {
+      overflow: hidden;
+      padding: 13px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border)
+    }
+
+    .mq-track {
+      display: flex;
+      animation: mq 36s linear infinite;
+      width: max-content
+    }
+
+    .mq-wrap:hover .mq-track {
+      animation-play-state: paused
+    }
+
+    @keyframes mq {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    .mi {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 32px;
+      border-right: 1px solid var(--border);
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      white-space: nowrap;
+      transition: color .2s
+    }
+
+    .mi:hover {
+      color: var(--white)
+    }
+
+    .md {
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0
+    }
+
+    /* SECTION COMMONS */
+    .sec {
+      padding: 130px 52px
+    }
+
+    .si {
+      max-width: var(--max);
+      margin: 0 auto
+    }
+
+    .sh {
+      text-align: center;
+      margin-bottom: 72px
+    }
+
+    .sey {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--accent);
+      margin-bottom: 18px;
+      display: block;
+      font-family: 'DM Mono', monospace
+    }
+
+    .st {
+      font-family: 'Fraunces', serif;
+      font-weight: 200;
+      font-size: clamp(36px, 4.5vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -.025em
+    }
+
+    .st em {
+      font-style: italic;
+      color: var(--accent)
+    }
+
+    .ssub {
+      font-size: 15px;
+      color: var(--grey);
+      line-height: 1.85;
+      max-width: 460px;
+      margin: 18px auto 0
+    }
+
+    /* SCROLL REVEALS */
+    .rv {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .rv.in {
+      opacity: 1;
+      transform: none
+    }
+
+    .rv-left {
+      opacity: 0;
+      transform: translateX(-52px);
+      transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .rv-left.in {
+      opacity: 1;
+      transform: none
+    }
+
+    .rv-right {
+      opacity: 0;
+      transform: translateX(52px);
+      transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .rv-right.in {
+      opacity: 1;
+      transform: none
+    }
+
+    .rv-scale {
+      opacity: 0;
+      transform: scale(.88);
+      transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .rv-scale.in {
+      opacity: 1;
+      transform: scale(1)
+    }
+
+    .sec-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .8s cubic-bezier(.16, 1, .3, 1), opacity .4s ease
+    }
+
+    .sec-divider.in {
+      opacity: .25;
+      transform: scaleX(1)
+    }
+
+    .sec-flash {
+      position: relative
+    }
+
+    .sec-flash::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 220, 0, .025);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .4s ease;
+      z-index: 0
+    }
+
+    .sec-flash.flash-active::after {
+      opacity: 1
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 160px 52px 100px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255, 255, 255, .02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 15%, transparent 100%);
+      animation: gdrift 24s linear infinite
+    }
+
+    @keyframes gdrift {
+      from {
+        transform: translateY(0)
+      }
+
+      to {
+        transform: translateY(64px)
+      }
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(110px);
+      pointer-events: none
+    }
+
+    .orb1 {
+      width: 640px;
+      height: 640px;
+      background: radial-gradient(circle, rgba(255, 220, 0, .09) 0%, transparent 65%);
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: of1 10s ease-in-out infinite
+    }
+
+    .orb2 {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(255, 107, 53, .06) 0%, transparent 70%);
+      bottom: 0;
+      left: 3%;
+      animation: of2 12s ease-in-out infinite
+    }
+
+    .orb3 {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(79, 159, 255, .055) 0%, transparent 70%);
+      bottom: -80px;
+      right: -20px;
+      animation: of3 14s ease-in-out infinite
+    }
+
+    @keyframes of1 {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0)
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(-24px)
+      }
+    }
+
+    @keyframes of2 {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-18px)
+      }
+    }
+
+    @keyframes of3 {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(22px)
+      }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 6px 18px;
+      border-radius: 100px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--grey);
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp .8s .2s ease forwards
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%
+    }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 200;
+      font-size: clamp(56px, 10.5vw, 148px);
+      line-height: .89;
+      letter-spacing: -.045em;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp .9s .35s ease forwards
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent)
+    }
+
+    .hero-title .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, .22);
+      display: block
+    }
+
+    .hero-desc {
+      max-width: 480px;
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--grey);
+      margin: 34px auto 0;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp 1s .5s ease forwards
+    }
+
+    .hero-desc strong {
+      color: var(--white);
+      font-weight: 400
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 44px;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp 1s .65s ease forwards
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      justify-content: center;
+      margin-top: 80px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp 1s .8s ease forwards;
+      width: 100%;
+      max-width: 600px
+    }
+
+    .hstat {
+      text-align: center;
+      flex: 1;
+      padding: 0 24px;
+      border-right: 1px solid var(--border)
+    }
+
+    .hstat:last-child {
+      border-right: none
+    }
+
+    .hstat-n {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -.03em;
+      display: block;
+      line-height: 1
+    }
+
+    .hstat-l {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--grey);
+      margin-top: 8px;
+      display: block
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--grey);
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp 1s 1.1s ease forwards;
+      transition: opacity .5s ease, transform .5s ease;
+      pointer-events: none
+    }
+
+    .scroll-hint.hidden {
+      opacity: 0 !important;
+      transform: translateX(-50%) translateY(12px) !important
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(var(--accent), transparent);
+      animation: sp 2s ease-in-out infinite
+    }
+
+    @keyframes sp {
+
+      0%,
+      100% {
+        transform: scaleY(1);
+        opacity: .7
+      }
+
+      50% {
+        transform: scaleY(.4);
+        opacity: .2
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* WORKS GRID */
+    .wks-home {
+      background: var(--bg2)
+    }
+
+    .wgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 360px 360px;
+      gap: 14px
+    }
+
+    .wc-full {
+      grid-column: 1/-1
+    }
+
+    .wc-full .wcard {
+      aspect-ratio: unset;
+      height: 100%
+    }
+
+    .wcard {
+      position: relative;
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      width: 100%;
+      height: 100%;
+      transition: box-shadow .55s cubic-bezier(.16, 1, .3, 1);
+      cursor: none;
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+    }
+
+    .wcard:hover {
+      box-shadow: 0 32px 80px rgba(0, 0, 0, .6)
+    }
+
+    .w-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .wcard:hover .w-image {
+      transform: scale(1.06)
+    }
+
+    .wfcard:hover .w-image {
+      transform: scale(1.06)
+    }
+
+    .w-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+      z-index: 1;
+      pointer-events: none
+    }
+
+    .wglow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: screen
+    }
+
+    .wg1 .wglow {
+      width: 55%;
+      height: 70%;
+      top: -10%;
+      right: -5%;
+      background: rgba(79, 159, 255, .25)
+    }
+
+    .wg2 .wglow {
+      width: 55%;
+      height: 70%;
+      bottom: -10%;
+      left: -5%;
+      background: rgba(255, 107, 53, .25)
+    }
+
+    .wg3 .wglow {
+      width: 55%;
+      height: 70%;
+      top: -10%;
+      left: 20%;
+      background: rgba(0, 200, 90, .25)
+    }
+
+    .wring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .07);
+      pointer-events: none;
+      transition: transform .8s ease;
+      z-index: 1
+    }
+
+    .wcard:hover .wring {
+      transform: rotate(18deg) scale(1.09)
+    }
+
+    .wcorner {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(.6) rotate(-40deg);
+      transition: opacity .35s, transform .35s;
+      z-index: 3
+    }
+
+    .wcard:hover .wcorner {
+      opacity: 1;
+      transform: scale(1) rotate(0)
+    }
+
+    .wcorner svg {
+      width: 13px;
+      height: 13px;
+      color: white
+    }
+
+    .winfo {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, .75) 55%);
+      z-index: 2
+    }
+
+    .wcat {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: rgba(255, 255, 255, .45);
+      margin-bottom: 8px;
+      font-family: 'DM Mono', monospace
+    }
+
+    .wname {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(20px, 2.8vw, 34px);
+      color: #fff;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+      margin-bottom: 12px
+    }
+
+    .wtags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, .12);
+      padding: 3px 11px;
+      border-radius: 100px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: rgba(255, 255, 255, .7)
+    }
+
+    /* SERVICES */
+    .svcs-home {
+      background: var(--bg)
+    }
+
+    .svc-list {
+      display: flex;
+      flex-direction: column
+    }
+
+    .svc-row {
+      display: grid;
+      grid-template-columns: 68px 1fr 200px 48px;
+      align-items: center;
+      gap: 28px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      cursor: none
+    }
+
+    .svc-row:last-child {
+      border-bottom: 1px solid var(--border)
+    }
+
+    .svc-row::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 0;
+      background: var(--accent);
+      transition: width .55s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .svc-row:hover::before {
+      width: 100%
+    }
+
+    .svc-row::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--bg3);
+      z-index: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .svc-row:hover::after {
+      transform: scaleX(1)
+    }
+
+    .svc-row>* {
+      position: relative;
+      z-index: 1
+    }
+
+    .snum {
+      font-size: 11px;
+      color: var(--grey);
+      letter-spacing: .1em;
+      font-family: 'DM Mono', monospace
+    }
+
+    .sname {
+      font-family: 'Fraunces', serif;
+      font-weight: 200;
+      font-size: clamp(20px, 2.4vw, 36px);
+      letter-spacing: -.02em;
+      transition: color .3s
+    }
+
+    .svc-row:hover .sname {
+      color: var(--accent)
+    }
+
+    .sdesc {
+      font-size: 11px;
+      color: var(--grey);
+      line-height: 1.65;
+      transition: color .3s
+    }
+
+    .svc-row:hover .sdesc {
+      color: rgba(255, 255, 255, .45)
+    }
+
+    .sarrow {
+      font-size: 18px;
+      color: var(--grey);
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: opacity .3s, transform .3s, color .3s;
+      text-align: right
+    }
+
+    .svc-row:hover .sarrow {
+      opacity: 1;
+      transform: none;
+      color: var(--accent)
+    }
+
+    /* TESTIMONIALS */
+    .tmonials {
+      background: var(--bg2)
+    }
+
+    .tgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px
+    }
+
+    .tcard {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: border-color .4s, transform .55s cubic-bezier(.16, 1, .3, 1), box-shadow .55s;
+      cursor: none
+    }
+
+    .tcard:hover {
+      border-color: rgba(255, 220, 0, .2);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .4)
+    }
+
+    .tcard.tall {
+      grid-row: span 2
+    }
+
+    .tstars {
+      display: flex;
+      gap: 4px
+    }
+
+    .tstar {
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)
+    }
+
+    .tquote {
+      font-family: 'Fraunces', serif;
+      font-weight: 200;
+      font-size: clamp(14px, 1.3vw, 18px);
+      line-height: 1.6;
+      letter-spacing: -.01em;
+      color: var(--cream);
+      flex: 1
+    }
+
+    .tauthor {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border)
+    }
+
+    .tav {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--white);
+      border: 1px solid var(--border)
+    }
+
+    .tname {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px
+    }
+
+    .trole {
+      font-size: 11px;
+      color: var(--grey);
+      margin-top: 2px
+    }
+
+    /* PROCESS */
+    .proc {
+      background: var(--bg)
+    }
+
+    .psteps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden
+    }
+
+    .pstep {
+      background: var(--bg3);
+      padding: 44px 32px;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: background .4s;
+      cursor: none
+    }
+
+    .pstep:last-child {
+      border-right: none
+    }
+
+    .pstep::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .5s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .pstep:hover::before {
+      transform: scaleX(1)
+    }
+
+    .pstep:hover {
+      background: var(--bg2)
+    }
+
+    .pnum {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 42px;
+      color: var(--grey2);
+      letter-spacing: -.03em;
+      margin-bottom: 22px;
+      display: block;
+      line-height: 1;
+      transition: color .3s
+    }
+
+    .pstep:hover .pnum {
+      color: var(--accent)
+    }
+
+    .ptitle {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 10px
+    }
+
+    .pbody {
+      font-size: 12px;
+      color: var(--grey);
+      line-height: 1.75
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--accent);
+      padding: 140px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .cta::before {
+      content: 'TUMBUR';
+      position: absolute;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(100px, 18vw, 280px);
+      color: rgba(0, 0, 0, .06);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -.04em
+    }
+
+    .cta-ey {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: rgba(0, 0, 0, .35);
+      margin-bottom: 20px;
+      display: block;
+      font-family: 'DM Mono', monospace;
+      position: relative;
+      z-index: 1
+    }
+
+    .cta-h {
+      font-family: 'Fraunces', serif;
+      font-weight: 200;
+      font-size: clamp(42px, 7vw, 108px);
+      color: #0a0a0a;
+      line-height: .9;
+      letter-spacing: -.045em;
+      margin-bottom: 52px;
+      position: relative;
+      z-index: 1
+    }
+
+    .cta-h em {
+      font-style: italic
+    }
+
+    .cta-acts {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 52px
+    }
+
+    .fi {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px
+    }
+
+    .flogo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -.02em;
+      color: var(--white)
+    }
+
+    .flinks {
+      display: flex;
+      gap: 28px;
+      list-style: none
+    }
+
+    .flinks a {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color .2s;
+      cursor: none
+    }
+
+    .flinks a:hover {
+      color: var(--white)
+    }
+
+    .fcopy {
+      font-size: 11px;
+      color: var(--grey);
+      letter-spacing: .04em
+    }
+
+    /* ══════════════════════════════
+       CASE STUDY PAGES
+    ══════════════════════════════ */
+
+    /* Dark hero at top */
+    .cs-hero {
+      padding: 160px 52px 0;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-hero .orb1 {
+      opacity: .7
+    }
+
+    .cs-hero__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* Tag pill */
+    .cs-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--accent);
+      margin-bottom: 28px;
+      font-family: 'DM Mono', monospace;
+      opacity: 0;
+      animation: fadeUp .7s .15s ease forwards;
+    }
+
+    .cs-tag::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%
+    }
+
+    .cs-hero__title {
+      font-family: 'Fraunces', serif;
+      font-weight: 200;
+      font-size: clamp(38px, 5.5vw, 82px);
+      line-height: 1.0;
+      letter-spacing: -.03em;
+      max-width: 900px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp .8s .25s ease forwards;
+    }
+
+    .cs-hero__title em {
+      font-style: italic;
+      color: var(--accent)
+    }
+
+    .cs-hero__meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--grey);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .8s .35s ease forwards;
+    }
+
+    .cs-meta-sep {
+      color: var(--border)
+    }
+
+    .cs-hero__pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp .8s .4s ease forwards;
+    }
+
+    .cs-pill {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--grey);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .cs-hero__desc {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--grey);
+      max-width: 620px;
+      margin-bottom: 60px;
+      opacity: 0;
+      animation: fadeUp .9s .45s ease forwards;
+    }
+
+    .cs-hero__desc strong {
+      color: var(--white);
+      font-weight: 400
+    }
+
+    /* Hero visual band with IMAGE support */
+    .cs-hero__visual {
+      width: 100%;
+      height: 480px;
+      border-radius: var(--r) var(--r) 0 0;
+      border: 1px solid var(--border);
+      border-bottom: none;
+      overflow: hidden;
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 1s .55s ease forwards;
+      background: var(--bg2);
+    }
+
+    .cs-hero__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .cs-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--bg) 0%, rgba(10, 10, 10, 0.3) 100%);
+      z-index: 1;
+    }
+
+    .cs-visual-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      z-index: 2;
+    }
+
+    .cs-visual-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(255, 220, 0, .15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 220, 0, .3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .cs-visual-label {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: -.02em;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Light body section */
+    .cs-body {
+      background: var(--bg2);
+      padding: 0;
+    }
+
+    .cs-body__layout {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 80px 52px 100px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* Sticky sidebar TOC */
+    .cs-toc {
+      position: sticky;
+      top: 100px;
+    }
+
+    .cs-toc__label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--grey);
+      margin-bottom: 16px;
+      display: block;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .cs-toc__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cs-toc__item a {
+      font-size: 11px;
+      color: var(--grey);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 0;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+      transition: color .2s, border-color .2s;
+      cursor: none;
+    }
+
+    .cs-toc__item a:hover,
+    .cs-toc__item a.active {
+      color: var(--white);
+      border-color: var(--accent);
+    }
+
+    /* Prose content */
+    .cs-prose {
+      min-width: 0;
+    }
+
+    /* Section intro block */
+    .cs-section {
+      margin-bottom: 72px;
+      padding-top: 56px;
+      border-top: 1px solid var(--border);
+    }
+
+    .cs-section:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .cs-section__tag {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: block;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .cs-section__h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(20px, 2vw, 28px);
+      color: var(--white);
+      margin-bottom: 18px;
+      letter-spacing: -.02em;
+    }
+
+    .cs-section__h2 em {
+      font-style: italic;
+      color: var(--accent);
+      font-family: 'Fraunces', serif;
+      font-weight: 200;
+    }
+
+    .cs-section__body {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.9;
+    }
+
+    .cs-section__body p {
+      margin-bottom: 16px
+    }
+
+    .cs-section__body p:last-child {
+      margin-bottom: 0
+    }
+
+    .cs-section__body strong {
+      color: var(--white);
+      font-weight: 500
+    }
+
+    .cs-section__body ul,
+    .cs-section__body ol {
+      padding-left: 20px;
+      margin: 16px 0;
+    }
+
+    .cs-section__body li {
+      margin-bottom: 8px;
+      color: var(--grey);
+    }
+
+    .cs-section__body li::marker {
+      color: var(--accent)
+    }
+
+    /* Stat row inside prose */
+    .cs-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin: 32px 0;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+
+    .cs-stat-box {
+      background: var(--bg3);
+      padding: 28px 24px;
+      border-right: 1px solid var(--border);
+      transition: background .3s;
+    }
+
+    .cs-stat-box:last-child {
+      border-right: none
+    }
+
+    .cs-stat-box:hover {
+      background: var(--bg)
+    }
+
+    .cs-stat-n {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 3vw, 44px);
+      color: var(--accent);
+      letter-spacing: -.03em;
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .cs-stat-l {
+      font-size: 11px;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: .1em
+    }
+
+    /* Highlight blockquote */
+    .cs-blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 18px 24px;
+      margin: 28px 0;
+      background: var(--bg3);
+      border-radius: 0 var(--r) var(--r) 0;
+    }
+
+    .cs-blockquote p {
+      font-family: 'Fraunces', serif;
+      font-weight: 200;
+      font-size: clamp(15px, 1.4vw, 19px);
+      line-height: 1.55;
+      color: var(--cream);
+      margin: 0 0 8px;
+    }
+
+    .cs-blockquote cite {
+      font-size: 11px;
+      color: var(--grey);
+      font-style: normal;
+    }
+
+    /* Problem/solution two-col */
+    .cs-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .cs-col-box {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px;
+      transition: border-color .3s;
+    }
+
+    .cs-col-box:hover {
+      border-color: rgba(255, 220, 0, .2)
+    }
+
+    .cs-col-box__label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: block;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .cs-col-box ul {
+      padding-left: 16px;
+      margin: 0
+    }
+
+    .cs-col-box li {
+      font-size: 13px;
+      color: var(--grey);
+      margin-bottom: 8px;
+      line-height: 1.6
+    }
+
+    .cs-col-box li::marker {
+      color: var(--accent)
+    }
+
+    /* Deliverable tag grid */
+    .cs-deliverables {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .cs-del {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 11px;
+      color: var(--grey);
+      font-family: 'DM Mono', monospace;
+      transition: color .2s, border-color .2s;
+    }
+
+    .cs-del:hover {
+      color: var(--white);
+      border-color: rgba(255, 220, 0, .25)
+    }
+
+    /* Image mockup block (WITH IMAGE SUPPORT) */
+    .cs-mockup {
+      width: 100%;
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 28px 0;
+      position: relative;
+      cursor: none;
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+    }
+
+    .cs-mockup__bg {
+      aspect-ratio: 16/9;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .cs-mockup__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: transform 0.6s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .cs-mockup:hover .cs-mockup__img {
+      transform: scale(1.03);
+    }
+
+    .cs-mockup__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 40%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .cs-mockup__caption {
+      padding: 14px 18px;
+      font-size: 11px;
+      color: var(--grey);
+      border-top: 1px solid var(--border);
+      background: var(--bg3);
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* Process steps in case study */
+    .cs-process {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .cs-process-step {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s;
+    }
+
+    .cs-process-step:hover {
+      border-color: rgba(255, 220, 0, .2)
+    }
+
+    .cs-process-step::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .cs-process-step:hover::before {
+      transform: scaleX(1)
+    }
+
+    .cs-step-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      color: var(--grey2);
+      letter-spacing: -.03em;
+      display: block;
+      margin-bottom: 12px;
+      line-height: 1;
+      transition: color .3s;
+    }
+
+    .cs-process-step:hover .cs-step-num {
+      color: var(--accent)
+    }
+
+    .cs-step-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 8px
+    }
+
+    .cs-step-body {
+      font-size: 12px;
+      color: var(--grey);
+      line-height: 1.7
+    }
+
+    /* Results banner */
+    .cs-results {
+      background: linear-gradient(135deg, rgba(255, 220, 0, .06), rgba(255, 220, 0, .02));
+      border: 1px solid rgba(255, 220, 0, .15);
+      border-radius: var(--r);
+      padding: 36px;
+      margin: 28px 0;
+    }
+
+    .cs-results__label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: block;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .cs-results__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .cs-result-item .cs-result-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(26px, 2.5vw, 38px);
+      color: var(--accent);
+      letter-spacing: -.03em;
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .cs-result-item .cs-result-label {
+      font-size: 11px;
+      color: var(--grey);
+      line-height: 1.5;
+    }
+
+    /* More Projects Footer */
+    .cs-more-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 80px 52px;
+      border-top: 1px solid var(--border);
+    }
+
+    .cs-more-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 32px;
+    }
+
+    .cs-more-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 200;
+      font-size: clamp(28px, 3.5vw, 42px);
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+
+    .cs-more-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .cs-more-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    /* GALLERY PAGES */
+    .cs-gallery-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 60px 52px 100px;
+    }
+
+    .cs-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .cs-gallery-item {
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 4/5;
+      background: var(--bg2);
+      position: relative;
+      cursor: none;
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+    }
+
+    .cs-gallery-item.wide {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+
+    .cs-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .cs-gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    /* WORKS PAGE */
+    .works-page {
+      background: var(--bg)
+    }
+
+    .works-hero {
+      padding: 180px 52px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .works-full-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding: 0 52px 80px;
+      max-width: var(--max);
+      margin: 0 auto
+    }
+
+    .wfcard {
+      position: relative;
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: none;
+      transition: box-shadow .5s, transform .5s cubic-bezier(.16, 1, .3, 1);
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      height: 100%;
+    }
+
+    .wfcard:hover {
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .55);
+      transform: translateY(-4px)
+    }
+
+    .wfcard.tall {
+      grid-row: span 2
+    }
+
+    .wfcard-inner {
+      aspect-ratio: 4/3;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .wfcard.tall .wfcard-inner {
+      aspect-ratio: unset;
+      min-height: 500px
+    }
+
+    .wfglow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: screen
+    }
+
+    .wfc1 .wfglow {
+      width: 60%;
+      height: 60%;
+      top: 0;
+      right: 0;
+      background: rgba(79, 159, 255, .2)
+    }
+
+    .wfc2 .wfglow {
+      width: 60%;
+      height: 60%;
+      bottom: 0;
+      left: 0;
+      background: rgba(255, 100, 20, .2)
+    }
+
+    .wfc3 .wfglow {
+      width: 60%;
+      height: 60%;
+      top: 0;
+      left: 20%;
+      background: rgba(0, 200, 90, .18)
+    }
+
+    .wfc4 .wfglow {
+      width: 60%;
+      height: 60%;
+      bottom: 0;
+      right: 0;
+      background: rgba(180, 80, 255, .2)
+    }
+
+    .wfc5 .wfglow {
+      width: 60%;
+      height: 60%;
+      top: 0;
+      left: 0;
+      background: rgba(255, 50, 100, .2)
+    }
+
+    .wfc6 .wfglow {
+      width: 60%;
+      height: 60%;
+      bottom: 0;
+      right: 0;
+      background: rgba(200, 200, 0, .15)
+    }
+
+    .wfinfo {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, .75) 55%);
+      z-index: 2
+    }
+
+    .wfcat {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: rgba(255, 255, 255, .45);
+      margin-bottom: 6px;
+      font-family: 'DM Mono', monospace
+    }
+
+    .wfname {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(16px, 2vw, 24px);
+      color: #fff;
+      letter-spacing: -.02em;
+      margin-bottom: 10px
+    }
+
+    .wftags {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap
+    }
+
+    .wfcorner {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, .12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(.5);
+      transition: opacity .3s, transform .3s;
+      z-index: 3
+    }
+
+    .wfcard:hover .wfcorner {
+      opacity: 1;
+      transform: scale(1)
+    }
+
+    .wfcorner svg {
+      width: 12px;
+      height: 12px;
+      color: white
+    }
+
+    /* ABOUT PAGE */
+    .about-page {
+      background: var(--bg)
+    }
+
+    .about-hero {
+      padding: 180px 52px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 72px;
+      align-items: start;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 52px 130px
+    }
+
+    .about-sticky {
+      position: sticky;
+      top: 120px
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: var(--r);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 32px
+    }
+
+    .about-photo-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #060d18, #0c2a56 50%, #155e8e);
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .about-photo-initials {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 80px;
+      color: rgba(255, 220, 0, .15);
+      letter-spacing: -.04em
+    }
+
+    .about-photo-ring {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 220, 0, .1);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
+    }
+
+    .about-photo-ring2 {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .05);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
+    }
+
+    .about-name-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 24px
+    }
+
+    .about-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -.02em;
+      margin-bottom: 4px
+    }
+
+    .about-role-label {
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 16px;
+      display: block
+    }
+
+    .about-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .about-contact-link {
+      font-size: 11px;
+      color: var(--grey);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+      cursor: none
+    }
+
+    .about-contact-link::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 10px
+    }
+
+    .about-contact-link:hover {
+      color: var(--white)
+    }
+
+    .about-content-col {
+      padding-top: 8px
+    }
+
+    .about-section-block {
+      margin-bottom: 64px
+    }
+
+    .about-section-block:last-child {
+      margin-bottom: 0
+    }
+
+    .about-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: block;
+      font-family: 'DM Mono', monospace
+    }
+
+    .about-h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 200;
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -.025em;
+      margin-bottom: 24px
+    }
+
+    .about-h2 em {
+      font-style: italic;
+      color: var(--accent)
+    }
+
+    .about-body {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.9;
+      margin-bottom: 16px
+    }
+
+    .about-body strong {
+      color: var(--white);
+      font-weight: 400
+    }
+
+    .about-highlight {
+      background: var(--bg3);
+      border-left: 2px solid var(--accent);
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+      font-size: 13px;
+      color: var(--white);
+      line-height: 1.8
+    }
+
+    .about-highlight strong {
+      color: var(--accent)
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 8px
+    }
+
+    .skill-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      transition: border-color .3s
+    }
+
+    .skill-item:hover {
+      border-color: rgba(255, 220, 0, .25)
+    }
+
+    .skill-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--white);
+      margin-bottom: 4px
+    }
+
+    .skill-level {
+      font-size: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .1em
+    }
+
+    .tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px
+    }
+
+    .tool-badge {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 11px;
+      color: var(--grey);
+      transition: color .2s, border-color .2s
+    }
+
+    .tool-badge:hover {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, .2)
+    }
+
+    .timeline {
+      margin-top: 8px
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      align-items: start
+    }
+
+    .tl-item:last-child {
+      border-bottom: 1px solid var(--border)
+    }
+
+    .tl-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: .08em;
+      padding-top: 3px
+    }
+
+    .tl-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--white);
+      margin-bottom: 4px
+    }
+
+    .tl-org {
+      font-size: 12px;
+      color: var(--grey)
+    }
+
+    /* CONTACT PAGE */
+    .contact-page {
+      background: var(--bg)
+    }
+
+    .contact-hero {
+      padding: 180px 52px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 52px 130px
+    }
+
+    .contact-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px
+    }
+
+    .contact-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 40px;
+      transition: border-color .4s
+    }
+
+    .contact-card:hover {
+      border-color: rgba(255, 220, 0, .2)
+    }
+
+    .contact-card-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: block;
+      font-family: 'DM Mono', monospace
+    }
+
+    .contact-card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 8px
+    }
+
+    .contact-card-body {
+      font-size: 13px;
+      color: var(--grey);
+      line-height: 1.75;
+      margin-bottom: 20px
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      transition: gap .2s;
+      cursor: none;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600
+    }
+
+    .contact-link:hover {
+      gap: 12px
+    }
+
+    .contact-form-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 40px
+    }
+
+    .form-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--grey);
+      margin-bottom: 8px;
+      display: block;
+      font-family: 'DM Mono', monospace
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      color: var(--white);
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      line-height: 1.5;
+      outline: none;
+      transition: border-color .3s;
+      margin-bottom: 18px;
+      cursor: none
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: rgba(255, 220, 0, .4)
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #0a0a0a;
+      padding: 16px;
+      border-radius: 100px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      border: none;
+      cursor: none;
+      transition: background .2s;
+      margin-top: 4px
+    }
+
+    .form-submit:hover {
+      background: var(--cream)
+    }
+
+    .avail-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255, 220, 0, .2);
+      border-radius: var(--r);
+      padding: 36px;
+      display: flex;
+      align-items: center;
+      gap: 20px
+    }
+
+    .avail-dot-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 220, 0, .1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    .avail-dot {
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: breathe 2s ease infinite
+    }
+
+    .avail-text-main {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--accent);
+      margin-bottom: 4px
+    }
+
+    .avail-text-sub {
+      font-size: 12px;
+      color: var(--grey)
+    }
+
+    .social-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px
+    }
+
+    .social-link-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      cursor: none;
+      transition: opacity .2s
+    }
+
+    .social-link-row:first-child {
+      border-top: 1px solid var(--border)
+    }
+
+    .social-link-row:hover {
+      opacity: .7
+    }
+
+    .social-link-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--white)
+    }
+
+    .social-link-handle {
+      font-size: 12px;
+      color: var(--grey);
+      font-family: 'DM Mono', monospace
+    }
+
+    /* PAGE TRANSITION */
+    #page-transition {
+      position: fixed;
+      top: 100vh;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--accent);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: top .7s cubic-bezier(.76, 0, .24, 1)
+    }
+
+    #page-transition.slide-up {
+      top: 0
+    }
+
+    #transition-text {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(40px, 8vw, 80px);
+      font-weight: 800;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+      opacity: 0;
+      transform: translateY(30px) scale(.95);
+      transition: opacity .5s ease, transform .5s cubic-bezier(.34, 1.56, .64, 1)
+    }
+
+    #transition-text.show {
+      opacity: 1;
+      transform: translateY(0) scale(1)
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px) {
+      nav {
+        padding: 18px 24px
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      .sec,
+      .works-hero,
+      .about-hero,
+      .contact-hero,
+      .cs-hero {
+        padding-left: 24px;
+        padding-right: 24px
+      }
+
+      .hero {
+        padding: 140px 24px 90px
+      }
+
+      .hero-stats {
+        gap: 0;
+        flex-wrap: nowrap
+      }
+
+      .wgrid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto
+      }
+
+      .wc-full {
+        grid-column: 1
+      }
+
+      .wgrid .wcard {
+        aspect-ratio: 16/9
+      }
+
+      .svc-row {
+        grid-template-columns: 44px 1fr
+      }
+
+      .sdesc,
+      .sarrow {
+        display: none
+      }
+
+      .psteps {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .tgrid {
+        grid-template-columns: 1fr
+      }
+
+      .tcard.tall {
+        grid-row: auto
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 24px 80px
+      }
+
+      .about-sticky {
+        position: static
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        padding: 0 24px 80px
+      }
+
+      .works-full-grid {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 24px 60px
+      }
+
+      .wfcard.tall {
+        grid-row: auto
+      }
+
+      .fi {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .flinks {
+        flex-wrap: wrap;
+        gap: 14px
+      }
+
+      .form-row {
+        grid-template-columns: 1fr
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr
+      }
+
+      .cs-body__layout {
+        grid-template-columns: 1fr;
+        padding: 40px 24px 60px
+      }
+
+      .cs-toc {
+        display: none
+      }
+
+      .cs-two-col {
+        grid-template-columns: 1fr
+      }
+
+      .cs-process {
+        grid-template-columns: 1fr
+      }
+
+      .cs-results__grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .cs-stats-row {
+        grid-template-columns: 1fr
+      }
+
+      .cs-more-wrap {
+        padding: 60px 24px;
+      }
+
+      .cs-more-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .cs-more-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cs-hero__visual {
+        height: 240px
+      }
+
+      .cs-gallery-wrap {
+        padding: 40px 24px 80px;
+      }
+
+      .cs-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .cs-gallery-item.wide {
+        grid-column: span 1;
+        aspect-ratio: 4/3;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
+  <div id="prog"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="nav-logo" onclick="showPage('home')"><span class="logo-dot"></span>Tumbur S. Philip</a>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" data-page="home" class="active">Home</a></li>
+      <li><a onclick="showPage('works')" data-page="works">Work</a></li>
+      <li><a onclick="showPage('about')" data-page="about">About</a></li>
+      <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+    </ul>
+    <div style="display: flex; gap: 12px; align-items: center;">
+      <a class="nav-cta mag" onclick="toggleTheme()" style="background: var(--bg3); color: var(--white);">Toggle
+        Theme</a>
+      <a class="nav-cta mag" onclick="showPage('contact')">Hire Me</a>
+    </div>
+  </nav>
+
+  <!-- ══ HOME ══ -->
+  <div class="page active" id="page-home">
+    <section class="hero" id="hero-section">
+      <div class="hero-grid"></div>
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+      <div class="hero-eyebrow">Brand Visual Designer · Southeast Asia</div>
+      <h1 class="hero-title" id="htitle">Clear design for<br><em>growing</em><br><span class="outline">brands</span>
+      </h1>
+      <p class="hero-desc">I design brands, websites, and social media content to help businesses connect with their
+        audience in Indonesia, Singapore, and Malaysia.</p>
+      <div class="hero-actions">
+        <a class="btn-p mag" onclick="showPage('contact')">Start a Project →</a>
+        <a class="btn-g mag" onclick="showPage('works')">See My Work</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><span class="hstat-n" id="s1">0</span><span class="hstat-l">Brands Launched</span></div>
+        <div class="hstat"><span class="hstat-n" id="s2">0</span><span class="hstat-l">Markets Entered</span></div>
+        <div class="hstat"><span class="hstat-n">4.9<span style="color:var(--accent)">★</span></span><span
+            class="hstat-l">Client Rating</span></div>
+      </div>
+      <div class="scroll-hint" id="scroll-hint">
+        <div class="scroll-line"></div><span>scroll</span>
+      </div>
+    </section>
+
+    <div class="sec-divider" data-divider></div>
+
+    <div class="mq-wrap">
+      <div class="mq-track">
+        <div class="mi">
+          <div class="md"></div>Brand Identity
+        </div>
+        <div class="mi">
+          <div class="md"></div>Web Design
+        </div>
+        <div class="mi">
+          <div class="md"></div>Social Content
+        </div>
+        <div class="mi">
+          <div class="md"></div>Video Production
+        </div>
+        <div class="mi">
+          <div class="md"></div>Digital Strategy
+        </div>
+        <div class="mi">
+          <div class="md"></div>Packaging Design
+        </div>
+        <div class="mi">
+          <div class="md"></div>UI/UX Design
+        </div>
+        <div class="mi">
+          <div class="md"></div>Marketing Assets
+        </div>
+        <div class="mi">
+          <div class="md"></div>Brand Identity
+        </div>
+        <div class="mi">
+          <div class="md"></div>Web Design
+        </div>
+        <div class="mi">
+          <div class="md"></div>Social Content
+        </div>
+        <div class="mi">
+          <div class="md"></div>Video Production
+        </div>
+        <div class="mi">
+          <div class="md"></div>Digital Strategy
+        </div>
+        <div class="mi">
+          <div class="md"></div>Packaging Design
+        </div>
+        <div class="mi">
+          <div class="md"></div>UI/UX Design
+        </div>
+        <div class="mi">
+          <div class="md"></div>Marketing Assets
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURED WORK -->
+    <section class="sec wks-home sec-flash" id="works-home">
+      <div class="si">
+        <div class="sh">
+          <span class="sey rv">Selected Work</span>
+          <h2 class="st rv" style="transition-delay:.1s">Featured <em>projects</em></h2>
+          <p class="ssub rv" style="transition-delay:.2s">A selection of my recent work for businesses in different
+            regions.</p>
+        </div>
+        <div class="wgrid">
+          <div class="wc-full rv-scale" style="transition-delay:.1s">
+            <div class="wcard wg1 tilt" onclick="showPage('case-funclaw')" style="cursor:none">
+              <img src="Gallery/Funclaw/funclaw-banner.png" class="w-image" alt="FunClaw Arcade">
+              <div class="w-overlay"></div>
+              <div class="wglow"></div>
+              <div class="wring" style="width:260px;height:260px;top:50%;right:-60px;transform:translateY(-50%)"></div>
+              <div class="wring"
+                style="width:160px;height:160px;top:50%;right:20px;transform:translateY(-50%);opacity:.5"></div>
+              <div class="wcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg></div>
+              <div class="winfo">
+                <div class="wcat">Gaming · Indonesia</div>
+                <div class="wname">FunClaw Indonesia</div>
+                <div class="wtags"><span class="tag">Web Design</span><span class="tag">Brand Identity</span><span
+                    class="tag">Social Content</span><span class="tag">Video Editing</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="height:100%" class="rv-left">
+            <div class="wcard wg2 tilt" style="height:100%" onclick="showPage('case-speechworth')" style="cursor:none">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1470&auto=format&fit=crop"
+                class="w-image" alt="Speechworth Speaking">
+              <div class="w-overlay"></div>
+              <div class="wglow"></div>
+              <div class="wcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg></div>
+              <div class="winfo">
+                <div class="wcat">Education · 2024</div>
+                <div class="wname">Speechworth</div>
+                <div class="wtags"><span class="tag">Brand Identity</span><span class="tag">Web Design</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="height:100%" class="rv-right">
+            <div class="wcard wg3 tilt" style="height:100%" onclick="showPage('case-polar')" style="cursor:none">
+              <img src="Gallery/Polaricecream/polar-website.png" class="w-image" alt="Polar Ice Cream">
+              <div class="w-overlay"></div>
+              <div class="wglow"></div>
+              <div class="wcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg></div>
+              <div class="winfo">
+                <div class="wcat">Food & Beverage · Vietnam</div>
+                <div class="wname">Polar Ice Cream</div>
+                <div class="wtags"><span class="tag">Web Development</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rv" style="text-align:center;margin-top:48px;transition-delay:.35s">
+          <a class="btn-g mag" onclick="showPage('works')">View All Projects →</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="sec-divider" data-divider></div>
+
+    <!-- SERVICES -->
+    <section class="sec svcs-home sec-flash" id="services">
+      <div class="si">
+        <div class="sh">
+          <span class="sey rv">What I Do</span>
+          <h2 class="st rv" style="transition-delay:.1s">Design <em>services</em></h2>
+          <p class="ssub rv" style="transition-delay:.2s">I can help with the design process from the initial idea to
+            the final product.</p>
+        </div>
+        <div class="svc-list">
+          <div class="svc-row rv-left" style="transition-delay:.05s"><span class="snum">01</span><span
+              class="sname scramble">Brand Identity</span><span class="sdesc">Visual design including logos, colors,
+              typography, and guidelines.</span><span class="sarrow">→</span></div>
+          <div class="svc-row rv-right" style="transition-delay:.1s"><span class="snum">02</span><span
+              class="sname scramble">Website Design</span><span class="sdesc">Creating functional and responsive
+              websites using Wix or Shopify.</span><span class="sarrow">→</span></div>
+          <div class="svc-row rv-left" style="transition-delay:.15s"><span class="snum">03</span><span
+              class="sname scramble">Social Media Content</span><span class="sdesc">Designing graphics and videos for
+              Instagram and online ads.</span><span class="sarrow">→</span></div>
+          <div class="svc-row rv-right" style="transition-delay:.2s"><span class="snum">04</span><span
+              class="sname scramble">Video Production</span><span class="sdesc">Filming and editing promotional videos
+              and event coverage.</span><span class="sarrow">→</span></div>
+          <div class="svc-row rv-left" style="transition-delay:.25s"><span class="snum">05</span><span
+              class="sname scramble">Marketing Materials</span><span class="sdesc">Designing physical items like
+              packaging, merchandise, and uniforms.</span><span class="sarrow">→</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="sec-divider" data-divider></div>
+
+    <!-- PROCESS -->
+    <section class="sec proc sec-flash">
+      <div class="si">
+        <div class="sh">
+          <span class="sey rv">My Process</span>
+          <h2 class="st rv" style="transition-delay:.1s">How we will <em>work together</em></h2>
+        </div>
+        <div class="psteps">
+          <div class="pstep rv-scale" style="transition-delay:.05s"><span class="pnum">01</span>
+            <div class="ptitle">Discovery</div>
+            <div class="pbody">We start by discussing your business goals and understanding your target audience.</div>
+          </div>
+          <div class="pstep rv-scale" style="transition-delay:.15s"><span class="pnum">02</span>
+            <div class="ptitle">Design</div>
+            <div class="pbody">I create initial design concepts so we can review and refine them together early on.
+            </div>
+          </div>
+          <div class="pstep rv-scale" style="transition-delay:.25s"><span class="pnum">03</span>
+            <div class="ptitle">Refinement</div>
+            <div class="pbody">We work through feedback to improve the details and make sure the design meets your
+              needs.</div>
+          </div>
+          <div class="pstep rv-scale" style="transition-delay:.35s"><span class="pnum">04</span>
+            <div class="ptitle">Launch</div>
+            <div class="pbody">I provide the final files and documentation to help you manage your new assets.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="sec-divider" data-divider></div>
+
+    <!-- TESTIMONIALS -->
+    <section class="sec tmonials sec-flash">
+      <div class="si">
+        <div class="sh">
+          <span class="sey rv">Client Feedback</span>
+          <h2 class="st rv" style="transition-delay:.1s">What my clients <em>say</em></h2>
+        </div>
+        <div class="tgrid">
+          <div class="tcard tall rv-left" style="transition-delay:.1s">
+            <div>
+              <div class="tstars">
+                <div class="tstar"></div>
+                <div class="tstar"></div>
+                <div class="tstar"></div>
+                <div class="tstar"></div>
+                <div class="tstar"></div>
+              </div>
+              <p class="tquote" style="margin-top:16px">"We received a complete brand system and two websites for our
+                Indonesian launch in under a year. The project included Instagram posts, videos, merchandise, and event
+                photography. Everything was delivered at a consistently high standard."</p>
+            </div>
+            <div class="tauthor">
+              <div class="tav" style="background:linear-gradient(135deg,#0f3460,#1a6b9a)">FC</div>
+              <div>
+                <div class="tname">FunClaw Team</div>
+                <div class="trole">Gaming Brand · Regional Expansion</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div class="tcard rv-right" style="transition-delay:.2s;flex:1">
+              <div>
+                <div class="tstars">
+                  <div class="tstar"></div>
+                  <div class="tstar"></div>
+                  <div class="tstar"></div>
+                  <div class="tstar"></div>
+                  <div class="tstar"></div>
+                </div>
+                <p class="tquote" style="margin-top:16px">"We finally have a brand identity we are proud of. The process
+                  was collaborative, revisions were quick, and the result was exactly what we needed."</p>
+              </div>
+              <div class="tauthor">
+                <div class="tav" style="background:linear-gradient(135deg,#6b2800,#c8470a)">SW</div>
+                <div>
+                  <div class="tname">Speechworth Founders</div>
+                  <div class="trole">Education Services</div>
+                </div>
+              </div>
+            </div>
+            <div class="tcard rv-right" style="transition-delay:.3s;flex:1">
+              <div>
+                <div class="tstars">
+                  <div class="tstar"></div>
+                  <div class="tstar"></div>
+                  <div class="tstar"></div>
+                  <div class="tstar"></div>
+                  <div class="tstar"></div>
+                </div>
+                <p class="tquote" style="margin-top:16px">"The detailed Figma prototypes were translated into a
+                  beautiful Wix site with impressive accuracy. The communication was clear and the process was very
+                  efficient."</p>
+              </div>
+              <div class="tauthor">
+                <img src="Gallery/Polaricecream/polar-logo.png" class="tav"
+                  style="object-fit: contain; padding: 4px; background: #fff;">
+                <div>
+                  <div class="tname">Polar Ice Cream</div>
+                  <div class="trole">Food & Beverage · Vietnam</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <span class="cta-ey rv">Let's work together</span>
+      <h2 class="cta-h rv" style="transition-delay:.1s">Ready to<br><em>start a</em><br>project?</h2>
+      <div class="cta-acts rv" style="transition-delay:.2s">
+        <a class="btn-dark mag" onclick="showPage('contact')">Start a Project →</a>
+        <a class="btn-outline mag" onclick="showPage('about')">Learn About Me</a>
+      </div>
+    </section>
+    <footer>
+      <div class="fi">
+        <div class="flogo">Tumbur S. Philip</div>
+        <ul class="flinks">
+          <li><a href="mailto:tumbursphilip@gmail.com">Email</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+        <div class="fcopy">© 2025 Tumbur S. Philip</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══ WORKS PAGE ══ -->
+  <div class="page" id="page-works">
+    <section class="works-hero">
+      <div class="orb orb1" style="opacity:.6"></div>
+      <span class="sey rv" style="display:block;text-align:center">Portfolio</span>
+      <h1 class="st rv" style="transition-delay:.1s;text-align:center">All <em>Projects</em></h1>
+      <p class="ssub rv" style="transition-delay:.2s">A complete view of my past design work across different
+        industries.</p>
+    </section>
+    <div class="works-full-grid">
+      <div class="wfcard wfc1 tall rv tilt-f" data-cats="brand web social video" onclick="showPage('case-funclaw')">
+        <div class="wfcard-inner"><img src="Gallery/Funclaw/funclaw-banner.png" class="w-image" alt="FunClaw">
+          <div class="w-overlay"></div>
+          <div class="wfglow"></div>
+          <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg></div>
+          <div class="wfinfo">
+            <div class="wfcat">Gaming · Indonesia</div>
+            <div class="wfname">FunClaw Indonesia</div>
+            <div class="wftags"><span class="tag">Web Design</span><span class="tag">Brand Identity</span><span
+                class="tag">Social Content</span><span class="tag">Video Editing</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="wfcard wfc2 rv tilt-f" data-cats="brand web" onclick="showPage('case-speechworth')">
+        <div class="wfcard-inner"><img
+            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1470&auto=format&fit=crop"
+            class="w-image" alt="Speechworth">
+          <div class="w-overlay"></div>
+          <div class="wfglow"></div>
+          <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg></div>
+          <div class="wfinfo">
+            <div class="wfcat">Education · 2024</div>
+            <div class="wfname">Speechworth</div>
+            <div class="wftags"><span class="tag">Brand Identity</span><span class="tag">Web Design</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="wfcard wfc3 rv tilt-f" data-cats="web" onclick="showPage('case-polar')">
+        <div class="wfcard-inner"><img src="Gallery/Polaricecream/polar-website.png" class="w-image" alt="Polar">
+          <div class="w-overlay"></div>
+          <div class="wfglow"></div>
+          <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg></div>
+          <div class="wfinfo">
+            <div class="wfcat">Food & Beverage · Vietnam</div>
+            <div class="wfname">Polar Ice Cream</div>
+            <div class="wftags"><span class="tag">Web Development</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="wfcard wfc4 rv tilt-f" data-cats="social video" onclick="showPage('case-social')">
+        <div class="wfcard-inner"><img
+            src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1474&auto=format&fit=crop"
+            class="w-image" alt="Social Media">
+          <div class="w-overlay"></div>
+          <div class="wfglow"></div>
+          <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg></div>
+          <div class="wfinfo">
+            <div class="wfcat">Social Media Content</div>
+            <div class="wfname">Instagram & Reels</div>
+            <div class="wftags"><span class="tag">Graphic Design</span><span class="tag">Video Editing</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="wfcard wfc5 rv tilt-f" data-cats="brand" onclick="showPage('case-packaging')">
+        <div class="wfcard-inner"><img
+            src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1594&auto=format&fit=crop"
+            class="w-image" alt="Packaging Design">
+          <div class="w-overlay"></div>
+          <div class="wfglow"></div>
+          <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg></div>
+          <div class="wfinfo">
+            <div class="wfcat">Print Design</div>
+            <div class="wfname">Packaging & Merchandise</div>
+            <div class="wftags"><span class="tag">Packaging</span><span class="tag">Stickers</span><span
+                class="tag">Uniforms</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="fi">
+        <div class="flogo">Tumbur S. Philip</div>
+        <ul class="flinks">
+          <li><a href="mailto:tumbursphilip@gmail.com">Email</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+        <div class="fcopy">© 2025 Tumbur S. Philip</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══ ABOUT PAGE ══ -->
+  <div class="page about-page" id="page-about">
+    <section class="about-hero"><span class="sey rv">Background</span>
+      <h1 class="st rv" style="transition-delay:.1s">About <em>Me</em></h1>
+    </section>
+    <div class="about-grid">
+      <div class="about-sticky rv-left" style="transition-delay:.2s">
+        <div class="about-photo">
+          <img src="About Me.jpg" alt="Tumbur S. Philip" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="about-name-card">
+          <div class="about-name">Tumbur S. Philip</div><span class="about-role-label">Brand Visual Designer</span>
+          <div class="about-contacts"><a href="mailto:tumbursphilip@gmail.com"
+              class="about-contact-link">tumbursphilip@gmail.com</a><a href="#" class="about-contact-link">LinkedIn
+              Profile</a></div>
+        </div>
+      </div>
+      <div class="about-content-col">
+        <div class="about-section-block rv" style="transition-delay:.3s"><span class="about-label">Background</span>
+          <h2 class="about-h2">I design clear visual identities for <em>growing businesses</em>.</h2>
+          <p class="about-body">I work with businesses in Southeast Asia to create designs that are practical, clean,
+            and easy to understand.</p>
+          <div class="about-highlight"><strong>Core Focus:</strong> Brand Identity, Web Design, and Digital Campaigns.
+          </div>
+        </div>
+        <div class="about-section-block rv"><span class="about-label">Skills</span>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-name">Brand Identity</div>
+              <div class="skill-level">Expert</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Web Design (UI/UX)</div>
+              <div class="skill-level">Expert</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Art Direction</div>
+              <div class="skill-level">Advanced</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Video Production</div>
+              <div class="skill-level">Advanced</div>
+            </div>
+          </div>
+          <div class="tools-row" style="margin-top:16px"><span class="tool-badge">Figma</span><span
+              class="tool-badge">Adobe CC</span><span class="tool-badge">Wix Studio</span><span
+              class="tool-badge">Shopify</span></div>
+        </div>
+        <div class="about-section-block rv"><span class="about-label">Experience</span>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-year">2021 - Now</div>
+              <div>
+                <div class="tl-title">Independent Visual Designer</div>
+                <div class="tl-org">Working with global clients</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2019 - 2021</div>
+              <div>
+                <div class="tl-title">Senior Designer</div>
+                <div class="tl-org">Creative Agency</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="fi">
+        <div class="flogo">Tumbur S. Philip</div>
+        <ul class="flinks">
+          <li><a href="mailto:tumbursphilip@gmail.com">Email</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+        <div class="fcopy">© 2025 Tumbur S. Philip</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══ CONTACT PAGE ══ -->
+  <div class="page contact-page" id="page-contact">
+    <section class="contact-hero"><span class="sey rv">Contact</span>
+      <h1 class="st rv" style="transition-delay:.1s">Let's get in <em>touch</em></h1>
+    </section>
+    <div class="contact-grid">
+      <div class="contact-col rv-left" style="transition-delay:.2s">
+        <div class="avail-card">
+          <div class="avail-dot-wrap">
+            <div class="avail-dot"></div>
+          </div>
+          <div>
+            <div class="avail-text-main">Available for new projects</div>
+            <div class="avail-text-sub">I am currently taking on new work.</div>
+          </div>
+        </div>
+        <div class="contact-card"><span class="contact-card-label">Direct Contact</span>
+          <h3 class="contact-card-title">Say Hello</h3>
+          <p class="contact-card-body">Feel free to send an email. I will reply as soon as possible.</p>
+          <a href="mailto:tumbursphilip@gmail.com" class="contact-link mag">tumbursphilip@gmail.com →</a>
+        </div>
+        <div class="contact-card" style="padding:24px 40px"><span class="contact-card-label"
+            style="margin-bottom:16px">Socials</span>
+          <div class="social-row"><a href="#" class="social-link-row"><span
+                class="social-link-name">LinkedIn</span><span class="social-link-handle">@tumbur</span></a><a href="#"
+              class="social-link-row"><span class="social-link-name">Instagram</span><span
+                class="social-link-handle">@tumbursphilip</span></a></div>
+        </div>
+      </div>
+      <div class="contact-col rv-right" style="transition-delay:.3s">
+        <div class="contact-form-card"><span class="contact-card-label">Project Inquiry</span>
+          <h3 class="contact-card-title">Fill out the form</h3>
+          <p class="contact-card-body" style="margin-bottom:24px">Please share some basic details about what you need.
+          </p>
+          <form onsubmit="event.preventDefault();">
+            <div class="form-row">
+              <div><label class="form-label">Name</label><input type="text" class="form-input" placeholder="John Doe">
+              </div>
+              <div><label class="form-label">Email</label><input type="email" class="form-input"
+                  placeholder="john@company.com"></div>
+            </div><label class="form-label">Project Details</label><textarea class="form-textarea"
+              placeholder="Please describe your project."></textarea><button type="submit" class="form-submit mag">Send
+              Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="fi">
+        <div class="flogo">Tumbur S. Philip</div>
+        <ul class="flinks">
+          <li><a href="mailto:tumbursphilip@gmail.com">Email</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+        <div class="fcopy">© 2025 Tumbur S. Philip</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CASE STUDY 1 - FUNCLAW INDONESIA
+  ══════════════════════════════════════ -->
+  <div class="page" id="page-case-funclaw">
+    <!-- Dark hero -->
+    <section class="cs-hero">
+      <div class="orb orb1" style="opacity:.5"></div>
+      <div class="cs-hero__inner">
+        <span class="cs-tag">Case Study</span>
+        <h1 class="cs-hero__title">Designing a new website and social media presence for FunClaw in <em>Indonesia</em>
+        </h1>
+        <div class="cs-hero__meta">
+          <span>Digital & Content Designer</span>
+          <span class="cs-meta-sep">·</span>
+          <span>2023 – 2024</span>
+          <span class="cs-meta-sep">·</span>
+          <span>Indonesia</span>
+        </div>
+        <div class="cs-hero__pills">
+          <span class="cs-pill">Web Design</span>
+          <span class="cs-pill">Social Media Strategy</span>
+          <span class="cs-pill">Video Production</span>
+          <span class="cs-pill">Merchandise</span>
+        </div>
+        <p class="cs-hero__desc">FunClaw is an arcade business from Singapore that expanded to Indonesia. They needed a
+          localized digital presence. I helped them build a new website and create social media content for the
+          Indonesian audience.</p>
+      </div>
+
+      <!-- HERO VISUAL -->
+      <div class="cs-hero__visual">
+        <img src="Gallery/Funclaw/funclaw-banner.png" class="cs-hero__img" alt="FunClaw Hero">
+        <div class="cs-hero__overlay"></div>
+        <div class="cs-visual-center">
+          <img src="Gallery/Funclaw/funclaw-logo.png" alt="FunClaw Logo" style="max-height: 80px; margin-bottom: 8px;">
+          <div class="cs-visual-label">FunClaw Indonesia</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Light prose body -->
+    <div class="cs-body">
+      <div class="cs-body__layout">
+        <!-- Sticky TOC -->
+        <aside class="cs-toc">
+          <span class="cs-toc__label">Contents</span>
+          <ul class="cs-toc__list">
+            <li class="cs-toc__item"><a href="#fc-overview">Overview</a></li>
+            <li class="cs-toc__item"><a href="#fc-problem">The Challenge</a></li>
+            <li class="cs-toc__item"><a href="#fc-approach">My Approach</a></li>
+            <li class="cs-toc__item"><a href="#fc-localization">Brand Assets</a></li>
+            <li class="cs-toc__item"><a href="#fc-web">Web Design</a></li>
+            <li class="cs-toc__item"><a href="#fc-social">Social Graphics</a></li>
+            <li class="cs-toc__item"><a href="#fc-results">Results</a></li>
+          </ul>
+        </aside>
+
+        <!-- Prose -->
+        <div class="cs-prose">
+
+          <div class="cs-section" id="fc-overview">
+            <span class="cs-section__tag">Overview</span>
+            <h2 class="cs-section__h2">Creating a local <em>online presence</em></h2>
+            <div class="cs-section__body">
+              <p>FunClaw operates claw machine locations. For their move to Indonesia, I was hired to design their new
+                website and social media graphics using their existing brand guidelines.
+              </p>
+              <p>I worked with their team to establish their online presence from the ground up, providing a complete
+                package of web and social materials.</p>
+            </div>
+            <div class="cs-stats-row">
+              <div class="cs-stat-box"><span class="cs-stat-n">12</span><span class="cs-stat-l">Months of work</span>
+              </div>
+              <div class="cs-stat-box"><span class="cs-stat-n">64</span><span class="cs-stat-l">Instagram posts</span>
+              </div>
+              <div class="cs-stat-box"><span class="cs-stat-n">1</span><span class="cs-stat-l">Website built</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="fc-problem">
+            <span class="cs-section__tag">The Challenge</span>
+            <h2 class="cs-section__h2">The <em>Challenge</em></h2>
+            <div class="cs-section__body">
+              <p>FunClaw needed social media content and a website that appealed specifically to the Indonesian market
+                while keeping their established visual style.</p>
+            </div>
+            <div class="cs-two-col">
+              <div class="cs-col-box">
+                <span class="cs-col-box__label">Market Needs</span>
+                <ul>
+                  <li>Appealing to a younger gaming audience</li>
+                  <li>Creating a completely new social media account</li>
+                  <li>Applying existing guidelines to new formats</li>
+                  <li>Working with a tight timeline</li>
+                </ul>
+              </div>
+              <div class="cs-col-box">
+                <span class="cs-col-box__label">Project Goals</span>
+                <ul>
+                  <li>Use current brand colors and logos</li>
+                  <li>Build a functional Indonesian website</li>
+                  <li>Design content for a new Instagram account</li>
+                  <li>Design localized physical items</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="fc-approach">
+            <span class="cs-section__tag">My Approach</span>
+            <h2 class="cs-section__h2">My <em>Approach</em></h2>
+            <div class="cs-section__body">
+              <p>I created a set of reusable design components based on their original brand guidelines. This made it
+                easier to produce consistent content for their website and social media without constantly starting from
+                scratch.</p>
+            </div>
+            <div class="cs-process">
+              <div class="cs-process-step"><span class="cs-step-num">01</span>
+                <div class="cs-step-title">Brand Adaptation</div>
+                <div class="cs-step-body">I adjusted their visual style to fit a younger demographic in Indonesia.</div>
+              </div>
+              <div class="cs-process-step"><span class="cs-step-num">02</span>
+                <div class="cs-step-title">Website Design</div>
+                <div class="cs-step-body">I designed and built their Indonesian website with a focus on mobile
+                  usability.</div>
+              </div>
+              <div class="cs-process-step"><span class="cs-step-num">03</span>
+                <div class="cs-step-title">Content Creation</div>
+                <div class="cs-step-body">I created templates for their Instagram posts, stories, and videos.</div>
+              </div>
+              <div class="cs-process-step"><span class="cs-step-num">04</span>
+                <div class="cs-step-title">Physical Items</div>
+                <div class="cs-step-body">I applied the design to physical items like cups and stickers.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="fc-localization">
+            <span class="cs-section__tag">Brand Assets</span>
+            <h2 class="cs-section__h2">Using existing <em>brand assets</em></h2>
+            <div class="cs-section__body">
+              <p>I took FunClaw's existing colors and visual elements and applied them to new templates for the
+                Indonesian market. The goal was to keep the brand recognizable while making it fresh for a new audience.
+              </p>
+            </div>
+
+            <!-- MOCKUP BOX -->
+            <div class="cs-mockup">
+              <div class="cs-mockup__bg">
+                <img src="Gallery/Funclaw/funclaw-deliverable.png" class="cs-mockup__img" alt="Brand Identity Preview">
+                <div class="cs-mockup__overlay"></div>
+              </div>
+              <div class="cs-mockup__caption">Established brand elements applied to new digital channels.
+              </div>
+            </div>
+
+            <div class="cs-section__body">
+              <p><strong>Deliverables in this phase:</strong></p>
+            </div>
+            <div class="cs-deliverables">
+              <span class="cs-del">Visual Review</span><span class="cs-del">Design Templates</span><span
+                class="cs-del">Merchandise</span><span class="cs-del">Social Graphics</span><span class="cs-del">Event
+                Photography</span>
+            </div>
+          </div>
+
+          <div class="cs-section" id="fc-web">
+            <span class="cs-section__tag">Web Design</span>
+            <h2 class="cs-section__h2">Website <em>Design</em></h2>
+            <div class="cs-section__body">
+              <p>I built a dedicated website for Indonesia. The focus was on helping users find locations and view the
+                games easily on their phones.</p>
+            </div>
+
+            <!-- MOCKUP BOX -->
+            <div class="cs-mockup">
+              <div class="cs-mockup__bg">
+                <img src="Gallery/Funclaw/funclaw-website.png" class="cs-mockup__img" alt="Website Design">
+                <div class="cs-mockup__overlay"></div>
+              </div>
+              <div class="cs-mockup__caption">The local website designed using FunClaw's core visual system.</div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="fc-social">
+            <span class="cs-section__tag">Social Graphics</span>
+            <h2 class="cs-section__h2">Social Media <em>Graphics</em></h2>
+            <div class="cs-section__body">
+              <p>I designed the first batch of Instagram posts to start their new account. I also edited short videos
+                for their social media feed to showcase the locations and games.</p>
+            </div>
+            <div class="cs-deliverables">
+              <span class="cs-del">Feed Posts</span><span class="cs-del">Stories Templates</span><span
+                class="cs-del">Reel Videos</span><span class="cs-del">Online Ads</span><span class="cs-del">Event
+                Photos</span>
+            </div>
+          </div>
+
+          <div class="cs-section" id="fc-results">
+            <span class="cs-section__tag">Results</span>
+            <h2 class="cs-section__h2"><em>Results</em></h2>
+            <div class="cs-results">
+              <span class="cs-results__label">Outcomes</span>
+              <div class="cs-results__grid">
+                <div class="cs-result-item"><span class="cs-result-num">12</span><span class="cs-result-label">Months of
+                    continuous design support</span></div>
+                <div class="cs-result-item"><span class="cs-result-num">64</span><span class="cs-result-label">Social
+                    media posts created</span></div>
+                <div class="cs-result-item"><span class="cs-result-num">5★</span><span class="cs-result-label">Positive
+                    feedback on all deliverables</span></div>
+              </div>
+            </div>
+            <div class="cs-blockquote">
+              <p>"We received a complete brand system and two websites for our Indonesian launch in under a year. The
+                project included Instagram posts, videos, merchandise, and event photography. Everything was delivered
+                at a consistently high standard."</p>
+              <cite>FunClaw Indonesia Team</cite>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- More Projects Footer -->
+    <div class="cs-more-wrap">
+      <div class="cs-more-header">
+        <h2 class="cs-more-title">Keep <em>exploring</em></h2>
+        <a class="btn-g mag" onclick="showPage('works')">Back to all work</a>
+      </div>
+      <div class="cs-more-grid">
+        <!-- Speechworth Card -->
+        <div class="wfcard wfc2 tilt-f" onclick="showPage('case-speechworth')">
+          <div class="wfcard-inner"><img
+              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1470&auto=format&fit=crop"
+              class="w-image" alt="Speechworth">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Education · 2024</div>
+              <div class="wfname">Speechworth</div>
+            </div>
+          </div>
+        </div>
+        <!-- Polar Card -->
+        <div class="wfcard wfc3 tilt-f" onclick="showPage('case-polar')">
+          <div class="wfcard-inner"><img src="Gallery/Polaricecream/polar-website.png" class="w-image" alt="Polar">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Food & Beverage · Vietnam</div>
+              <div class="wfname">Polar Ice Cream</div>
+            </div>
+          </div>
+        </div>
+        <!-- Social Card -->
+        <div class="wfcard wfc4 tilt-f" onclick="showPage('case-social')">
+          <div class="wfcard-inner"><img
+              src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1474&auto=format&fit=crop"
+              class="w-image" alt="Social Media">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Social Media Content</div>
+              <div class="wfname">Instagram & Reels</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="fi">
+        <div class="flogo">Tumbur S. Philip</div>
+        <ul class="flinks">
+          <li><a href="mailto:tumbursphilip@gmail.com">Email</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+        <div class="fcopy">© 2025 Tumbur S. Philip</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CASE STUDY 2 - SPEECHWORTH
+  ══════════════════════════════════════ -->
+  <div class="page" id="page-case-speechworth">
+    <section class="cs-hero">
+      <div class="orb orb2" style="opacity:.5;left:auto;right:3%;bottom:auto;top:10%"></div>
+      <div class="cs-hero__inner">
+        <span class="cs-tag">Case Study</span>
+        <h1 class="cs-hero__title">Creating a professional visual identity and <em>website</em></h1>
+        <div class="cs-hero__meta">
+          <span>Brand Visual Designer</span>
+          <span class="cs-meta-sep">·</span>
+          <span>2024</span>
+          <span class="cs-meta-sep">·</span>
+          <span>Southeast Asia</span>
+        </div>
+        <div class="cs-hero__pills">
+          <span class="cs-pill">Brand Identity</span>
+          <span class="cs-pill">Wix Web Design</span>
+          <span class="cs-pill">Presentation Design</span>
+          <span class="cs-pill">Social Graphics</span>
+        </div>
+        <p class="cs-hero__desc">Speechworth offers communication coaching. They had some initial ideas for their
+          branding. I helped them refine these ideas into a full visual identity and built their first website on Wix.
+        </p>
+      </div>
+
+      <!-- HERO VISUAL -->
+      <div class="cs-hero__visual">
+        <img src="Gallery/Speechworth/Speech-mockup.jpg" class="cs-hero__img" alt="Speechworth Hero">
+        <div class="cs-hero__overlay"></div>
+        <div class="cs-visual-center">
+          <img src="Gallery/Speechworth/Speech-logo.png" alt="Speechworth Logo"
+            style="max-height: 220px; margin-bottom: 2px;">
+          <div class="cs-visual-label">Speechworth</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cs-body">
+      <div class="cs-body__layout">
+        <aside class="cs-toc">
+          <span class="cs-toc__label">Contents</span>
+          <ul class="cs-toc__list">
+            <li class="cs-toc__item"><a href="#sw-overview">Overview</a></li>
+            <li class="cs-toc__item"><a href="#sw-problem">The Challenge</a></li>
+            <li class="cs-toc__item"><a href="#sw-identity">Brand Identity</a></li>
+            <li class="cs-toc__item"><a href="#sw-web">Web Design</a></li>
+            <li class="cs-toc__item"><a href="#sw-results">Results</a></li>
+          </ul>
+        </aside>
+
+        <div class="cs-prose">
+
+          <div class="cs-section" id="sw-overview">
+            <span class="cs-section__tag">Overview</span>
+            <h2 class="cs-section__h2">A clear and professional <em>platform</em></h2>
+            <div class="cs-section__body">
+              <p>For educational services, a professional appearance is important. I worked with Speechworth to turn
+                their initial concepts into a complete brand and website.
+              </p>
+            </div>
+            <div class="cs-stats-row">
+              <div class="cs-stat-box"><span class="cs-stat-n">1</span><span class="cs-stat-l">Website</span></div>
+              <div class="cs-stat-box"><span class="cs-stat-n">5</span><span class="cs-stat-l">Design templates</span>
+              </div>
+              <div class="cs-stat-box"><span class="cs-stat-n">100%</span><span class="cs-stat-l">Easy to update</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="sw-problem">
+            <span class="cs-section__tag">The Challenge</span>
+            <h2 class="cs-section__h2">The <em>Challenge</em></h2>
+            <div class="cs-section__body">
+              <p>They needed technical help to create their branding. They also wanted a website that they could easily
+                update themselves without needing outside help for minor changes.
+              </p>
+            </div>
+            <div class="cs-two-col">
+              <div class="cs-col-box">
+                <span class="cs-col-box__label">Before</span>
+                <ul>
+                  <li>Initial logo ideas and colors</li>
+                  <li>No existing website</li>
+                  <li>Needed presentation materials</li>
+                </ul>
+              </div>
+              <div class="cs-col-box">
+                <span class="cs-col-box__label">After</span>
+                <ul>
+                  <li>Documented brand guidelines</li>
+                  <li>New Wix website</li>
+                  <li>Professional presentation slides</li>
+                  <li>Social media templates</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="sw-identity">
+            <span class="cs-section__tag">Brand Identity</span>
+            <h2 class="cs-section__h2">Brand <em>Identity</em></h2>
+            <div class="cs-section__body">
+              <p>I refined their logo and expanded their ideas into a complete set of brand guidelines. I also created
+                designs for their presentations and social media so everything matched their new style.</p>
+            </div>
+
+            <!-- MOCKUP BOX -->
+            <div class="cs-mockup">
+              <div class="cs-mockup__bg">
+                <img src="Gallery/Speechworth/Speech-event.jpg" class="cs-mockup__img"
+                  alt="Speechworth Identity Mockup">
+                <div class="cs-mockup__overlay"></div>
+              </div>
+              <div class="cs-mockup__caption">Speechworth brand assets.</div>
+            </div>
+
+            <div class="cs-deliverables">
+              <span class="cs-del">Logo Design</span><span class="cs-del">Brand Guidelines</span><span
+                class="cs-del">Presentation Design</span><span class="cs-del">Social Media Graphics</span>
+            </div>
+          </div>
+
+          <div class="cs-section" id="sw-web">
+            <span class="cs-section__tag">Web Design</span>
+            <h2 class="cs-section__h2">Website <em>Design</em></h2>
+            <div class="cs-section__body">
+              <p>I built their site using Wix so they could manage and edit the content themselves after the project was
+                finished. The goal was to provide a clean layout that clearly explained their services.</p>
+            </div>
+
+            <!-- MOCKUP BOX -->
+            <div class="cs-mockup">
+              <div class="cs-mockup__bg">
+                <img src="Gallery/Speechworth/Speech-web.png" class="cs-mockup__img" alt="Speechworth Web Mockup">
+                <div class="cs-mockup__overlay"></div>
+              </div>
+              <div class="cs-mockup__caption">The website layout built on Wix.</div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="sw-results">
+            <span class="cs-section__tag">Results</span>
+            <h2 class="cs-section__h2"><em>Results</em></h2>
+            <div class="cs-results">
+              <span class="cs-results__label">Outcomes</span>
+              <div class="cs-results__grid">
+                <div class="cs-result-item"><span class="cs-result-num">1st</span><span class="cs-result-label">Official
+                    website created</span></div>
+                <div class="cs-result-item"><span class="cs-result-num">100%</span><span class="cs-result-label">Success
+                    transferring website management to the client</span></div>
+                <div class="cs-result-item"><span class="cs-result-num">5★</span><span class="cs-result-label">Positive
+                    client feedback</span></div>
+              </div>
+            </div>
+            <div class="cs-blockquote">
+              <p>"We finally have a brand identity we are proud of. The process was collaborative, revisions were quick,
+                and the result was exactly what we needed."</p>
+              <cite>Speechworth Founders</cite>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- More Projects Footer -->
+    <div class="cs-more-wrap">
+      <div class="cs-more-header">
+        <h2 class="cs-more-title">Keep <em>exploring</em></h2>
+        <a class="btn-g mag" onclick="showPage('works')">Back to all work</a>
+      </div>
+      <div class="cs-more-grid">
+        <!-- Funclaw Card -->
+        <div class="wfcard wfc1 tilt-f" onclick="showPage('case-funclaw')">
+          <div class="wfcard-inner"><img src="Gallery/Funclaw/funclaw-banner.png" class="w-image" alt="FunClaw">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Gaming · Indonesia</div>
+              <div class="wfname">FunClaw Indonesia</div>
+            </div>
+          </div>
+        </div>
+        <!-- Polar Card -->
+        <div class="wfcard wfc3 tilt-f" onclick="showPage('case-polar')">
+          <div class="wfcard-inner"><img src="Gallery/Polaricecream/polar-website.png" class="w-image" alt="Polar">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Food & Beverage · Vietnam</div>
+              <div class="wfname">Polar Ice Cream</div>
+            </div>
+          </div>
+        </div>
+        <!-- Packaging Card -->
+        <div class="wfcard wfc5 tilt-f" onclick="showPage('case-packaging')">
+          <div class="wfcard-inner"><img
+              src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1594&auto=format&fit=crop"
+              class="w-image" alt="Packaging Design">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Print Design</div>
+              <div class="wfname">Packaging & Merch</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="fi">
+        <div class="flogo">Tumbur S. Philip</div>
+        <ul class="flinks">
+          <li><a href="mailto:tumbursphilip@gmail.com">Email</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+        <div class="fcopy">© 2025 Tumbur S. Philip</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CASE STUDY 3 - POLAR ICE CREAM
+  ══════════════════════════════════════ -->
+  <div class="page" id="page-case-polar">
+    <section class="cs-hero">
+      <div class="orb orb3" style="opacity:.6"></div>
+      <div class="cs-hero__inner">
+        <span class="cs-tag">Case Study</span>
+        <h1 class="cs-hero__title">Building a Wix website from <em>Figma designs</em></h1>
+        <div class="cs-hero__meta">
+          <span>Web Designer</span>
+          <span class="cs-meta-sep">·</span>
+          <span>2024</span>
+          <span class="cs-meta-sep">·</span>
+          <span>Vietnam</span>
+        </div>
+        <div class="cs-hero__pills">
+          <span class="cs-pill">Web Development</span>
+          <span class="cs-pill">Wix</span>
+          <span class="cs-pill">Figma</span>
+        </div>
+        <p class="cs-hero__desc">Polar Ice Cream had existing designs in Figma for their Vietnam website. They needed
+          someone to build the site in Wix exactly as designed.</p>
+      </div>
+
+      <div class="cs-hero__visual">
+        <img src="Gallery/Polaricecream/polar-website-new.png" class="cs-hero__img" alt="Polar Hero">
+        <div class="cs-hero__overlay"></div>
+        <div class="cs-visual-center">
+          <img src="Gallery/Polaricecream/polar-logo.png" style="height:120px; margin-bottom:16px;" alt="Polar Logo">
+          <div class="cs-visual-label">Polar Ice Cream</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cs-body">
+      <div class="cs-body__layout">
+        <aside class="cs-toc">
+          <span class="cs-toc__label">Contents</span>
+          <ul class="cs-toc__list">
+            <li class="cs-toc__item"><a href="#pi-overview">Overview</a></li>
+            <li class="cs-toc__item"><a href="#pi-problem">The Challenge</a></li>
+            <li class="cs-toc__item"><a href="#pi-approach">My Approach</a></li>
+            <li class="cs-toc__item"><a href="#pi-execution">Execution</a></li>
+            <li class="cs-toc__item"><a href="#pi-results">Results</a></li>
+          </ul>
+        </aside>
+
+        <div class="cs-prose">
+
+          <div class="cs-section" id="pi-overview">
+            <span class="cs-section__tag">Overview</span>
+            <h2 class="cs-section__h2">Accurate website <em>development</em></h2>
+            <div class="cs-section__body">
+              <p>The design team created detailed website prototypes. My task was to take those designs and build them
+                accurately in Wix.</p>
+            </div>
+            <div class="cs-stats-row">
+              <div class="cs-stat-box"><span class="cs-stat-n">1:1</span><span class="cs-stat-l">Design accuracy</span>
+              </div>
+              <div class="cs-stat-box"><span class="cs-stat-n">0</span><span class="cs-stat-l">Developers
+                  needed</span></div>
+              <div class="cs-stat-box"><span class="cs-stat-n">Fast</span><span class="cs-stat-l">Delivery time</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="pi-problem">
+            <span class="cs-section__tag">The Challenge</span>
+            <h2 class="cs-section__h2">The <em>Challenge</em></h2>
+            <div class="cs-section__body">
+              <p>The designs included specific spacing, animations, and layouts. The goal was to recreate them perfectly
+                in Wix.</p>
+            </div>
+            <div class="cs-two-col">
+              <div class="cs-col-box">
+                <span class="cs-col-box__label">Technical Needs</span>
+                <ul>
+                  <li>Working with complex Figma files</li>
+                  <li>Adding custom animations</li>
+                  <li>Matching fonts and layouts exactly</li>
+                  <li>Using Wix Studio</li>
+                </ul>
+              </div>
+              <div class="cs-col-box">
+                <span class="cs-col-box__label">Project Goals</span>
+                <ul>
+                  <li>Accurate translation of designs</li>
+                  <li>Making sure the site worked on mobile phones</li>
+                  <li>Setting up the product catalogue</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="pi-approach">
+            <span class="cs-section__tag">My Approach</span>
+            <h2 class="cs-section__h2">My <em>Approach</em></h2>
+            <div class="cs-section__body">
+              <p>I reviewed the Figma files and set up the global colors and fonts in Wix. Then, I built each page
+                section by section.</p>
+            </div>
+            <div class="cs-process">
+              <div class="cs-process-step"><span class="cs-step-num">01</span>
+                <div class="cs-step-title">Review</div>
+                <div class="cs-step-body">I looked over the Figma files to understand all the required components and
+                  interactions.</div>
+              </div>
+              <div class="cs-process-step"><span class="cs-step-num">02</span>
+                <div class="cs-step-title">Setup</div>
+                <div class="cs-step-body">I added the brand colors and fonts into Wix.</div>
+              </div>
+              <div class="cs-process-step"><span class="cs-step-num">03</span>
+                <div class="cs-step-title">Building</div>
+                <div class="cs-step-body">I built each section to match the designs exactly.</div>
+              </div>
+              <div class="cs-process-step"><span class="cs-step-num">04</span>
+                <div class="cs-step-title">Testing</div>
+                <div class="cs-step-body">I tested the website on mobile, tablet, and desktop screens.</div>
+              </div>
+            </div>
+            <!-- MOCKUP BOX -->
+            <div class="cs-mockup">
+              <div class="cs-mockup__bg">
+                <img src="Gallery/Polaricecream/Polar-Work (3).png" class="cs-mockup__img" alt="Figma Asset File View">
+                <div class="cs-mockup__overlay"></div>
+              </div>
+              <div class="cs-mockup__caption">Reviewing the Figma files to prepare for the build.</div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="pi-execution">
+            <span class="cs-section__tag">Execution</span>
+            <h2 class="cs-section__h2">The Build <em>Process</em></h2>
+            <div class="cs-section__body">
+              <p>I spent extra time on the product gallery to make sure the hover effects worked correctly. I also set
+                up the content manager so the team could easily add new products without changing the layout.</p>
+            </div>
+
+            <!-- MOCKUP BOX -->
+            <div class="cs-mockup">
+              <div class="cs-mockup__bg">
+                <img src="Gallery/Polaricecream/Polar-wix.png" class="cs-mockup__img"
+                  alt="Polar Ice Cream Wix Studio Build">
+                <div class="cs-mockup__overlay"></div>
+              </div>
+              <div class="cs-mockup__caption">The final website built in Wix Studio.</div>
+            </div>
+          </div>
+
+          <div class="cs-section" id="pi-results">
+            <span class="cs-section__tag">Results</span>
+            <h2 class="cs-section__h2"><em>Results</em></h2>
+            <div class="cs-results">
+              <span class="cs-results__label">Outcomes</span>
+              <div class="cs-results__grid">
+                <div class="cs-result-item"><span class="cs-result-num">1:1</span><span class="cs-result-label">The live
+                    site matched the design accurately</span></div>
+                <div class="cs-result-item"><span class="cs-result-num">Fast</span><span
+                    class="cs-result-label">Completed the project on schedule</span></div>
+                <div class="cs-result-item"><span class="cs-result-num">5★</span><span class="cs-result-label">Positive
+                    client feedback</span></div>
+              </div>
+            </div>
+            <div class="cs-blockquote">
+              <p>"The detailed Figma prototypes were translated into a beautiful Wix site with impressive accuracy. The
+                communication was clear and the process was very efficient."</p>
+              <cite>Polar Ice Cream Team</cite>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- More Projects Footer -->
+    <div class="cs-more-wrap">
+      <div class="cs-more-header">
+        <h2 class="cs-more-title">Keep <em>exploring</em></h2>
+        <a class="btn-g mag" onclick="showPage('works')">Back to all work</a>
+      </div>
+      <div class="cs-more-grid">
+        <!-- Funclaw Card -->
+        <div class="wfcard wfc1 tilt-f" onclick="showPage('case-funclaw')">
+          <div class="wfcard-inner"><img src="Gallery/Funclaw/funclaw-banner.png" class="w-image" alt="FunClaw">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Gaming · Indonesia</div>
+              <div class="wfname">FunClaw Indonesia</div>
+            </div>
+          </div>
+        </div>
+        <!-- Speechworth Card -->
+        <div class="wfcard wfc2 tilt-f" onclick="showPage('case-speechworth')">
+          <div class="wfcard-inner"><img
+              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1470&auto=format&fit=crop"
+              class="w-image" alt="Speechworth">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Education · 2024</div>
+              <div class="wfname">Speechworth</div>
+            </div>
+          </div>
+        </div>
+        <!-- Social Card -->
+        <div class="wfcard wfc4 tilt-f" onclick="showPage('case-social')">
+          <div class="wfcard-inner"><img
+              src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1474&auto=format&fit=crop"
+              class="w-image" alt="Social Media">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Social Media Content</div>
+              <div class="wfname">Instagram & Reels</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="fi">
+        <div class="flogo">Tumbur S. Philip</div>
+        <ul class="flinks">
+          <li><a href="mailto:tumbursphilip@gmail.com">Email</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+        <div class="fcopy">© 2025 Tumbur S. Philip</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CASE STUDY 4 - SOCIAL CONTENT
+  ══════════════════════════════════════ -->
+  <div class="page" id="page-case-social">
+    <section class="cs-hero">
+      <div class="orb orb1" style="opacity:.4"></div>
+      <div class="cs-hero__inner">
+        <span class="cs-tag">Gallery</span>
+        <h1 class="cs-hero__title">Instagram & <em>Reel Videos</em></h1>
+        <div class="cs-hero__meta">
+          <span>Social Media Content</span>
+          <span class="cs-meta-sep">·</span>
+          <span>Ongoing</span>
+        </div>
+        <p class="cs-hero__desc">Here are some examples of graphics and video thumbnails I have designed for social
+          media platforms.</p>
+      </div>
+    </section>
+
+    <div class="cs-gallery-wrap">
+      <div class="cs-gallery">
+        <!-- REPLACE THE 'src' URLS BELOW WITH YOUR OWN IMAGES -->
+        <div class="cs-gallery-item"><img
+            src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1474&auto=format&fit=crop"
+            alt="Social Post 1"></div>
+        <div class="cs-gallery-item"><img
+            src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=1470&auto=format&fit=crop"
+            alt="Social Post 2"></div>
+        <div class="cs-gallery-item"><img
+            src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1470&auto=format&fit=crop"
+            alt="Social Post 3"></div>
+        <div class="cs-gallery-item wide"><img
+            src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1474&auto=format&fit=crop"
+            alt="Social Post 4"></div>
+        <div class="cs-gallery-item"><img
+            src="https://images.unsplash.com/photo-1552554765-b77a06a2e9ea?q=80&w=1470&auto=format&fit=crop"
+            alt="Social Post 5"></div>
+      </div>
+    </div>
+
+    <!-- More Projects Footer -->
+    <div class="cs-more-wrap">
+      <div class="cs-more-header">
+        <h2 class="cs-more-title">Keep <em>exploring</em></h2>
+        <a class="btn-g mag" onclick="showPage('works')">Back to all work</a>
+      </div>
+      <div class="cs-more-grid">
+        <!-- Funclaw Card -->
+        <div class="wfcard wfc1 tilt-f" onclick="showPage('case-funclaw')">
+          <div class="wfcard-inner"><img src="Gallery/Funclaw/funclaw-banner.png" class="w-image" alt="FunClaw">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Gaming · Indonesia</div>
+              <div class="wfname">FunClaw Indonesia</div>
+            </div>
+          </div>
+        </div>
+        <!-- Packaging Card -->
+        <div class="wfcard wfc5 tilt-f" onclick="showPage('case-packaging')">
+          <div class="wfcard-inner"><img
+              src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1594&auto=format&fit=crop"
+              class="w-image" alt="Packaging Design">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Print Design</div>
+              <div class="wfname">Packaging & Merch</div>
+            </div>
+          </div>
+        </div>
+        <!-- Speechworth Card -->
+        <div class="wfcard wfc2 tilt-f" onclick="showPage('case-speechworth')">
+          <div class="wfcard-inner"><img
+              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1470&auto=format&fit=crop"
+              class="w-image" alt="Speechworth">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Education · 2024</div>
+              <div class="wfname">Speechworth</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="fi">
+        <div class="flogo">Tumbur S. Philip</div>
+        <ul class="flinks">
+          <li><a href="mailto:tumbursphilip@gmail.com">Email</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+        <div class="fcopy">© 2025 Tumbur S. Philip</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CASE STUDY 5 - PACKAGING & MERCH
+  ══════════════════════════════════════ -->
+  <div class="page" id="page-case-packaging">
+    <section class="cs-hero">
+      <div class="orb orb2" style="opacity:.4;left:auto;right:10%"></div>
+      <div class="cs-hero__inner">
+        <span class="cs-tag">Gallery</span>
+        <h1 class="cs-hero__title">Packaging & <em>Merchandise</em></h1>
+        <div class="cs-hero__meta">
+          <span>Print Design</span>
+          <span class="cs-meta-sep">·</span>
+          <span>Various Clients</span>
+        </div>
+        <p class="cs-hero__desc">Here are examples of physical items I have designed, including packaging, cups, and
+          stickers.</p>
+      </div>
+    </section>
+
+    <div class="cs-gallery-wrap">
+      <div class="cs-gallery">
+        <!-- REPLACE THE 'src' URLS BELOW WITH YOUR OWN IMAGES -->
+        <div class="cs-gallery-item wide"><img
+            src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1594&auto=format&fit=crop"
+            alt="Packaging 1"></div>
+        <div class="cs-gallery-item"><img
+            src="https://images.unsplash.com/photo-1586200236056-e918c5e064ec?q=80&w=1471&auto=format&fit=crop"
+            alt="Packaging 2"></div>
+        <div class="cs-gallery-item"><img
+            src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?q=80&w=1470&auto=format&fit=crop"
+            alt="Packaging 3"></div>
+        <div class="cs-gallery-item"><img
+            src="https://images.unsplash.com/photo-1628140136892-2394c8b2a1a4?q=80&w=1471&auto=format&fit=crop"
+            alt="Packaging 4"></div>
+        <div class="cs-gallery-item wide"><img
+            src="https://images.unsplash.com/photo-1620063991206-8fb54b1f63c8?q=80&w=1470&auto=format&fit=crop"
+            alt="Packaging 5"></div>
+      </div>
+    </div>
+
+    <!-- More Projects Footer -->
+    <div class="cs-more-wrap">
+      <div class="cs-more-header">
+        <h2 class="cs-more-title">Keep <em>exploring</em></h2>
+        <a class="btn-g mag" onclick="showPage('works')">Back to all work</a>
+      </div>
+      <div class="cs-more-grid">
+        <!-- Polar Card -->
+        <div class="wfcard wfc3 tilt-f" onclick="showPage('case-polar')">
+          <div class="wfcard-inner"><img src="Gallery/Polaricecream/polar-website.png" class="w-image" alt="Polar">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Food & Beverage · Vietnam</div>
+              <div class="wfname">Polar Ice Cream</div>
+            </div>
+          </div>
+        </div>
+        <!-- Social Card -->
+        <div class="wfcard wfc4 tilt-f" onclick="showPage('case-social')">
+          <div class="wfcard-inner"><img
+              src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1474&auto=format&fit=crop"
+              class="w-image" alt="Social Media">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Social Media Content</div>
+              <div class="wfname">Instagram & Reels</div>
+            </div>
+          </div>
+        </div>
+        <!-- Funclaw Card -->
+        <div class="wfcard wfc1 tilt-f" onclick="showPage('case-funclaw')">
+          <div class="wfcard-inner"><img src="Gallery/Funclaw/funclaw-banner.png" class="w-image" alt="FunClaw">
+            <div class="w-overlay"></div>
+            <div class="wfglow"></div>
+            <div class="wfcorner"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg></div>
+            <div class="wfinfo">
+              <div class="wfcat">Gaming · Indonesia</div>
+              <div class="wfname">FunClaw Indonesia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="fi">
+        <div class="flogo">Tumbur S. Philip</div>
+        <ul class="flinks">
+          <li><a href="mailto:tumbursphilip@gmail.com">Email</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+        <div class="fcopy">© 2025 Tumbur S. Philip</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- PAGE TRANSITION MATTE -->
+  <div id="page-transition">
+    <div id="transition-text">Loading</div>
+  </div>
+
+  <script>
+    (() => {
+      /* CURSOR */
+      const cur = document.getElementById('cur'), ring = document.getElementById('cur-ring');
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY });
+      (function loop() {
+        cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+        rx += (mx - rx) * .1; ry += (my - ry) * .1;
+        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+        requestAnimationFrame(loop);
+      })();
+
+      function bindHover() {
+        document.querySelectorAll('a,button,.wcard,.wfcard,.svc-row,.tcard,.pstep,.contact-card,.skill-item,.mag,.nav-cta,.cs-col-box,.cs-stat-box,.cs-process-step,.cs-result-item,.cs-mockup,.cs-gallery-item').forEach(el => {
+          el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
+          el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
+        });
+      }
+
+      /* SCROLL */
+      const bar = document.getElementById('prog');
+      const scrollHint = document.getElementById('scroll-hint');
+      const heroSection = document.getElementById('hero-section');
+
+      function updateScrollHint() {
+        if (!heroSection || !scrollHint) return;
+        if (window.scrollY > heroSection.offsetHeight * .38) scrollHint.classList.add('hidden');
+        else scrollHint.classList.remove('hidden');
+      }
+
+      window.addEventListener('scroll', () => {
+        const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+        bar.style.width = (pct * 100) + '%';
+        document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+        const y = window.scrollY;
+        const ht = document.getElementById('htitle');
+        if (ht) ht.style.transform = `translateY(${y * .14}px)`;
+        document.querySelectorAll('.orb1').forEach(o => o.style.transform = `translateX(-50%) translateY(${y * .1}px)`);
+        document.querySelectorAll('.orb2').forEach(o => o.style.transform = `translateY(${y * .07}px)`);
+        document.querySelectorAll('.orb3').forEach(o => o.style.transform = `translateY(${y * .06}px)`);
+        updateScrollHint();
+        updateTOC();
+      }, { passive: true });
+
+      /* REVEAL */
+      let revealObs;
+      function initReveal() {
+        if (revealObs) revealObs.disconnect();
+        const els = document.querySelectorAll('.rv:not(.in),.rv-left:not(.in),.rv-right:not(.in),.rv-scale:not(.in),.sec-divider:not(.in)');
+        revealObs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            const d = parseFloat(e.target.style.transitionDelay || 0) * 1000;
+            setTimeout(() => e.target.classList.add('in'), d);
+            revealObs.unobserve(e.target);
+          });
+        }, { threshold: .08, rootMargin: '0px 0px -20px 0px' });
+        els.forEach(el => revealObs.observe(el));
+        const flashObs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('flash-active'); setTimeout(() => e.target.classList.remove('flash-active'), 600); }
+          });
+        }, { threshold: .12 });
+        document.querySelectorAll('.sec-flash').forEach(el => flashObs.observe(el));
+      }
+
+      /* CASE STUDY TOC active state */
+      function updateTOC() {
+        const links = document.querySelectorAll('.cs-toc__item a');
+        if (!links.length) return;
+        let current = '';
+        links.forEach(a => {
+          const id = a.getAttribute('href').replace('#', '');
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= 160) current = id;
+        });
+        links.forEach(a => {
+          const id = a.getAttribute('href').replace('#', '');
+          a.classList.toggle('active', id === current);
+        });
+      }
+
+      /* PAGE TRANSITION */
+      let isTransitioning = false;
+      window.showPage = function (id) {
+        const targetPage = document.getElementById('page-' + id);
+        if (!targetPage || targetPage.classList.contains('active') || isTransitioning) return;
+        isTransitioning = true;
+        const titles = { home: 'Home', works: 'Work', about: 'About', contact: 'Contact', 'case-funclaw': 'FunClaw', 'case-speechworth': 'Speechworth', 'case-polar': 'Polar', 'case-social': 'Social & Video', 'case-packaging': 'Packaging' };
+        const matte = document.getElementById('page-transition');
+        const textEl = document.getElementById('transition-text');
+        textEl.textContent = titles[id] || id;
+        textEl.classList.remove('show');
+        matte.classList.add('slide-up');
+        setTimeout(() => textEl.classList.add('show'), 600);
+        setTimeout(() => {
+          textEl.classList.remove('show');
+          setTimeout(() => {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            targetPage.classList.add('active');
+            window.scrollTo(0, 0);
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.page === id));
+            setTimeout(() => { initReveal(); bindHover(); initTilt(); initMag(); initScramble(); updateScrollHint(); }, 60);
+            matte.classList.remove('slide-up');
+            setTimeout(() => isTransitioning = false, 700);
+          }, 400);
+        }, 1600);
+      };
+
+      /* COUNTER */
+      function countTo(el, target, suffix, dur) {
+        const s = performance.now();
+        (function step(now) {
+          const t = Math.min((now - s) / dur, 1), ease = 1 - Math.pow(1 - t, 4);
+          el.textContent = Math.round(ease * target) + suffix;
+          if (t < 1) requestAnimationFrame(step);
+        })(s);
+      }
+      setTimeout(() => {
+        const s1 = document.getElementById('s1'), s2 = document.getElementById('s2');
+        if (s1) countTo(s1, 3, '+', 1800);
+        if (s2) countTo(s2, 3, '+', 1800);
+      }, 1300);
+
+      /* TILT */
+      function initTilt() {
+        document.querySelectorAll('.tilt,.tilt-f').forEach(card => {
+          card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+            card.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 5}deg) scale(1.015)`;
+          });
+          card.addEventListener('mouseleave', () => card.style.transform = '');
+        });
+      }
+
+      /* MAGNETIC */
+      function initMag() {
+        document.querySelectorAll('.mag,.nav-cta').forEach(el => {
+          el.addEventListener('mousemove', e => {
+            const r = el.getBoundingClientRect();
+            const dx = (e.clientX - r.left - r.width / 2) * .26, dy = (e.clientY - r.top - r.height / 2) * .26;
+            el.style.transform = `translate(${dx}px,${dy}px) scale(1.04)`;
+          });
+          el.addEventListener('mouseleave', () => el.style.transform = '');
+        });
+      }
+
+      /* SCRAMBLE */
+      const CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%';
+      function initScramble() {
+        document.querySelectorAll('.scramble').forEach(el => {
+          const orig = el.textContent; let raf, iter = 0;
+          const row = el.closest('.svc-row'); if (!row) return;
+          row.addEventListener('mouseenter', () => {
+            cancelAnimationFrame(raf); iter = 0;
+            (function go() {
+              el.textContent = orig.split('').map((c, i) => { if (i < iter) return orig[i]; if (c === ' ') return ' '; return CH[Math.floor(Math.random() * CH.length)] }).join('');
+              if (iter < orig.length) { iter += .3; raf = requestAnimationFrame(go); } else el.textContent = orig;
+            })();
+          });
+          row.addEventListener('mouseleave', () => { cancelAnimationFrame(raf); el.textContent = orig; });
+        });
+      }
+
+      /* INIT */
+      initReveal(); bindHover(); initTilt(); initMag(); initScramble(); updateScrollHint();
+    })();
+
+    function toggleTheme() {
+      document.body.classList.toggle('resume-theme');
+    }
+  </script>
+</body>
+
+</html>
