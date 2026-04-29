@@ -2961,6 +2961,403 @@
         aspect-ratio: 4/3;
       }
     }
+
+    /* ══════════════════════════════
+       MEGA MENU
+    ══════════════════════════════ */
+    .has-mega {
+      position: relative;
+    }
+
+    .has-mega > a {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .has-mega > a .nav-chevron {
+      width: 10px;
+      height: 10px;
+      transition: transform .25s ease;
+      flex-shrink: 0;
+    }
+
+    .has-mega:hover > a .nav-chevron,
+    .has-mega.open > a .nav-chevron {
+      transform: rotate(180deg);
+    }
+
+    .mega-menu {
+      position: absolute;
+      top: calc(100% + 20px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      width: 700px;
+      background: rgba(17, 17, 17, 0.97);
+      backdrop-filter: blur(28px);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease, transform .3s cubic-bezier(.16,1,.3,1);
+      z-index: 600;
+      box-shadow: 0 32px 80px rgba(0,0,0,.7);
+    }
+
+    .mega-menu::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 8px;
+      background: var(--border);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    .has-mega:hover .mega-menu,
+    .has-mega.open .mega-menu {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: all;
+    }
+
+    .mega-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mega-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .mega-view-all {
+      font-size: 10px;
+      color: var(--grey);
+      text-decoration: none;
+      cursor: none;
+      transition: color .2s;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: .06em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .mega-view-all:hover {
+      color: var(--accent);
+    }
+
+    .mega-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .mega-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      cursor: none;
+      transition: background .25s, border-color .25s;
+      text-decoration: none;
+    }
+
+    .mega-item:hover {
+      background: var(--bg3);
+      border-color: var(--border);
+    }
+
+    .mega-thumb {
+      width: 68px;
+      height: 48px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+    }
+
+    .mega-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    .mega-item:hover .mega-thumb img {
+      transform: scale(1.08);
+    }
+
+    .mega-info {
+      min-width: 0;
+    }
+
+    .mega-cat {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 4px;
+    }
+
+    .mega-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--white);
+      letter-spacing: -.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mega-desc {
+      font-size: 10px;
+      color: var(--grey);
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════
+       HAMBURGER + MOBILE DRAWER
+    ══════════════════════════════ */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      cursor: none;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 8px;
+      transition: background .2s;
+      flex-shrink: 0;
+    }
+
+    .nav-hamburger:hover {
+      background: var(--bg2);
+    }
+
+    .nav-hamburger span {
+      display: block;
+      height: 1.5px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform .35s cubic-bezier(.16,1,.3,1), opacity .25s ease, width .25s ease;
+      transform-origin: center;
+    }
+
+    .nav-hamburger span:nth-child(2) {
+      width: 70%;
+    }
+
+    body.drawer-open .nav-hamburger span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    body.drawer-open .nav-hamburger span:nth-child(2) {
+      opacity: 0;
+      width: 0;
+    }
+
+    body.drawer-open .nav-hamburger span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    #mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      max-width: 90vw;
+      height: 100vh;
+      background: rgba(17,17,17,.98);
+      backdrop-filter: blur(28px);
+      border-left: 1px solid var(--border);
+      z-index: 9000;
+      transform: translateX(100%);
+      transition: transform .55s cubic-bezier(.76,0,.24,1);
+      display: flex;
+      flex-direction: column;
+      padding: 88px 32px 48px;
+      overflow-y: auto;
+    }
+
+    body.drawer-open #mobile-drawer {
+      transform: translateX(0);
+    }
+
+    #drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 8900;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .4s ease;
+    }
+
+    body.drawer-open #drawer-overlay {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .drawer-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .drawer-nav li a,
+    .drawer-nav li button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 14px 0;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--white);
+      text-decoration: none;
+      cursor: none;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -.02em;
+      transition: color .2s;
+    }
+
+    .drawer-nav li a:hover,
+    .drawer-nav li button:hover {
+      color: var(--accent);
+    }
+
+    .drawer-chevron {
+      width: 16px;
+      height: 16px;
+      color: var(--grey);
+      transition: transform .3s ease;
+      flex-shrink: 0;
+    }
+
+    .drawer-work-toggle.open .drawer-chevron {
+      transform: rotate(180deg);
+    }
+
+    .drawer-sub {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .45s cubic-bezier(.16,1,.3,1);
+    }
+
+    .drawer-sub.open {
+      max-height: 600px;
+    }
+
+    .drawer-sub li a {
+      font-size: 13px;
+      font-family: 'DM Mono', monospace;
+      font-weight: 400;
+      color: var(--grey);
+      padding: 10px 0 10px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      letter-spacing: .04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+    }
+
+    .drawer-sub li a::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .drawer-sub li a:hover {
+      color: var(--white);
+    }
+
+    .drawer-bottom {
+      margin-top: auto;
+      padding-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .drawer-cta {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border-radius: 100px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      text-decoration: none;
+      cursor: none;
+      transition: background .2s, color .2s;
+    }
+
+    .drawer-cta-primary {
+      background: var(--accent);
+      color: #0a0a0a;
+    }
+
+    .drawer-cta-primary:hover {
+      background: var(--cream);
+    }
+
+    .drawer-cta-secondary {
+      background: var(--bg3);
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+
+    .drawer-cta-secondary:hover {
+      border-color: rgba(255,255,255,.25);
+    }
+
+    @media(max-width:900px) {
+      .nav-hamburger {
+        display: flex;
+      }
+      .nav-links {
+        display: none !important;
+      }
+      .nav-right-ctas {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -2971,19 +3368,127 @@
 
   <!-- NAV -->
   <nav id="nav">
-    <a class="nav-logo" onclick="showPage('home')"><span class="logo-dot"></span>Tumbur S. Philip</a>
+    <a class="nav-logo" onclick="showPage('home')" style="cursor:none"><span class="logo-dot"></span>Tumbur S. Philip</a>
     <ul class="nav-links">
-      <li><a onclick="showPage('home')" data-page="home" class="active">Home</a></li>
-      <li><a onclick="showPage('works')" data-page="works">Work</a></li>
-      <li><a onclick="showPage('about')" data-page="about">About</a></li>
-      <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+      <li><a onclick="showPage('home')" data-page="home" class="active" style="cursor:none">Home</a></li>
+
+      <!-- WORK with Mega Menu -->
+      <li class="has-mega" id="work-mega-trigger">
+        <a onclick="showPage('works')" data-page="works" style="cursor:none">
+          Work
+          <svg class="nav-chevron" fill="none" viewBox="0 0 10 10" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2 3.5l3 3 3-3"/>
+          </svg>
+        </a>
+        <div class="mega-menu" id="mega-menu">
+          <div class="mega-header">
+            <span class="mega-label">Selected Projects</span>
+            <a onclick="showPage('works')" class="mega-view-all" style="cursor:none">View all work →</a>
+          </div>
+          <div class="mega-grid">
+            <!-- FunClaw -->
+            <a class="mega-item" onclick="showPage('case-funclaw')" style="cursor:none">
+              <div class="mega-thumb">
+                <img src="Gallery/Funclaw/funclaw-banner.png" alt="FunClaw">
+              </div>
+              <div class="mega-info">
+                <div class="mega-cat">Gaming · Indonesia</div>
+                <div class="mega-name">FunClaw Indonesia</div>
+                <div class="mega-desc">Brand Identity, Web &amp; Social</div>
+              </div>
+            </a>
+            <!-- Speechworth -->
+            <a class="mega-item" onclick="showPage('case-speechworth')" style="cursor:none">
+              <div class="mega-thumb">
+                <img src="Gallery/Speechworth/speech-brand.png" alt="Speechworth">
+              </div>
+              <div class="mega-info">
+                <div class="mega-cat">Education · 2024</div>
+                <div class="mega-name">Speechworth</div>
+                <div class="mega-desc">Brand Identity &amp; Web Design</div>
+              </div>
+            </a>
+            <!-- Polar Ice Cream -->
+            <a class="mega-item" onclick="showPage('case-polar')" style="cursor:none">
+              <div class="mega-thumb">
+                <img src="Gallery/Polaricecream/polar-website.png" alt="Polar Ice Cream">
+              </div>
+              <div class="mega-info">
+                <div class="mega-cat">Food &amp; Bev · Vietnam</div>
+                <div class="mega-name">Polar Ice Cream</div>
+                <div class="mega-desc">Wix Web Development</div>
+              </div>
+            </a>
+            <!-- Social & Video -->
+            <a class="mega-item" onclick="showPage('case-social')" style="cursor:none">
+              <div class="mega-thumb" style="background: linear-gradient(135deg,#1a1a1a,#222);display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:22px;">📱</span>
+              </div>
+              <div class="mega-info">
+                <div class="mega-cat">Social Media</div>
+                <div class="mega-name">Instagram &amp; Reels</div>
+                <div class="mega-desc">Graphics &amp; Video Content</div>
+              </div>
+            </a>
+            <!-- Packaging -->
+            <a class="mega-item" onclick="showPage('case-packaging')" style="cursor:none;grid-column:1/-1">
+              <div class="mega-thumb" style="background: linear-gradient(135deg,#1a1a1a,#222);display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:22px;">📦</span>
+              </div>
+              <div class="mega-info">
+                <div class="mega-cat">Print Design</div>
+                <div class="mega-name">Packaging &amp; Merch</div>
+                <div class="mega-desc">Physical Design Deliverables</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </li>
+
+      <li><a onclick="showPage('about')" data-page="about" style="cursor:none">About</a></li>
+      <li><a onclick="showPage('contact')" data-page="contact" style="cursor:none">Contact</a></li>
     </ul>
-    <div style="display: flex; gap: 12px; align-items: center;">
-      <a class="nav-cta mag" onclick="toggleTheme()" style="background: var(--bg3); color: var(--white);">Toggle
-        Theme</a>
-      <a class="nav-cta mag" onclick="showPage('contact')">Hire Me</a>
+    <div class="nav-right-ctas" style="display: flex; gap: 12px; align-items: center;">
+      <a class="nav-cta mag" onclick="toggleTheme()" style="background: var(--bg3); color: var(--white); cursor:none;">Toggle Theme</a>
+      <a class="nav-cta mag" onclick="showPage('contact')" style="cursor:none">Hire Me</a>
     </div>
+    <!-- Hamburger (mobile only) -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE DRAWER OVERLAY -->
+  <div id="drawer-overlay"></div>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" role="dialog" aria-label="Navigation menu">
+    <ul class="drawer-nav">
+      <li><a onclick="closeDrawer(); showPage('home')" style="cursor:none">Home</a></li>
+      <li>
+        <button class="drawer-work-toggle" id="drawer-work-toggle" aria-expanded="false">
+          Work
+          <svg class="drawer-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <ul class="drawer-sub" id="drawer-sub">
+          <li><a onclick="closeDrawer(); showPage('case-funclaw')" style="cursor:none">FunClaw Indonesia</a></li>
+          <li><a onclick="closeDrawer(); showPage('case-speechworth')" style="cursor:none">Speechworth</a></li>
+          <li><a onclick="closeDrawer(); showPage('case-polar')" style="cursor:none">Polar Ice Cream</a></li>
+          <li><a onclick="closeDrawer(); showPage('case-social')" style="cursor:none">Social &amp; Video</a></li>
+          <li><a onclick="closeDrawer(); showPage('case-packaging')" style="cursor:none">Packaging &amp; Merch</a></li>
+          <li><a onclick="closeDrawer(); showPage('works')" style="cursor:none; color: var(--accent);">View All Work →</a></li>
+        </ul>
+      </li>
+      <li><a onclick="closeDrawer(); showPage('about')" style="cursor:none">About</a></li>
+      <li><a onclick="closeDrawer(); showPage('contact')" style="cursor:none">Contact</a></li>
+    </ul>
+    <div class="drawer-bottom">
+      <a class="drawer-cta drawer-cta-primary" onclick="closeDrawer(); showPage('contact')" style="cursor:none">Hire Me →</a>
+      <a class="drawer-cta drawer-cta-secondary" onclick="closeDrawer(); toggleTheme()" style="cursor:none">Toggle Theme</a>
+    </div>
+  </div>
 
   <!-- ══ HOME ══ -->
   <div class="page active" id="page-home">
@@ -4703,6 +5208,48 @@
 
       /* INIT */
       initReveal(); bindHover(); initTilt(); initMag(); initScramble(); updateScrollHint();
+
+      /* MOBILE DRAWER */
+      const hamburger = document.getElementById('nav-hamburger');
+      const drawerOverlay = document.getElementById('drawer-overlay');
+      const drawerWorkToggle = document.getElementById('drawer-work-toggle');
+      const drawerSub = document.getElementById('drawer-sub');
+
+      window.closeDrawer = function() {
+        document.body.classList.remove('drawer-open');
+        hamburger.setAttribute('aria-label', 'Open menu');
+      };
+
+      function openDrawer() {
+        document.body.classList.add('drawer-open');
+        hamburger.setAttribute('aria-label', 'Close menu');
+      }
+
+      if (hamburger) {
+        hamburger.addEventListener('click', () => {
+          document.body.classList.contains('drawer-open') ? closeDrawer() : openDrawer();
+        });
+      }
+
+      if (drawerOverlay) {
+        drawerOverlay.addEventListener('click', closeDrawer);
+      }
+
+      if (drawerWorkToggle) {
+        drawerWorkToggle.addEventListener('click', () => {
+          const isOpen = drawerSub.classList.toggle('open');
+          drawerWorkToggle.classList.toggle('open', isOpen);
+          drawerWorkToggle.setAttribute('aria-expanded', isOpen);
+        });
+      }
+
+      /* MEGA MENU – close when clicking outside */
+      document.addEventListener('click', (e) => {
+        const trigger = document.getElementById('work-mega-trigger');
+        if (trigger && !trigger.contains(e.target)) {
+          trigger.classList.remove('open');
+        }
+      });
     })();
 
     function toggleTheme() {
