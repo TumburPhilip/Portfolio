@@ -289,6 +289,12 @@
       transform: scale(1.04)
     }
 
+    .nav-right-ctas {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
     /* BUTTONS */
     .btn-p {
       background: var(--accent);
@@ -4121,7 +4127,7 @@
       }
 
       .nav-right-ctas {
-        display: none;
+        display: none !important;
       }
     }
   </style>
@@ -4217,7 +4223,7 @@
       <li><a onclick="showPage('about')" data-page="about" style="cursor:none">About</a></li>
       <li><a onclick="showPage('contact')" data-page="contact" style="cursor:none">Contact</a></li>
     </ul>
-    <div class="nav-right-ctas" style="display: flex; gap: 12px; align-items: center;">
+    <div class="nav-right-ctas">
       <a class="nav-cta mag" onclick="toggleTheme()"
         style="background: var(--bg3); color: var(--white); cursor:none;">Toggle Theme</a>
       <a class="nav-cta mag" onclick="showPage('contact')" style="cursor:none">Hire Me</a>
