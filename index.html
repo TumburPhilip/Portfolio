@@ -96,13 +96,19 @@
       scroll-behavior: smooth
     }
 
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+      position: relative;
+      width: 100%
+    }
+
     body {
       background: var(--bg);
       color: var(--white);
       font-family: 'DM Mono', monospace;
       font-size: 14px;
       line-height: 1.65;
-      overflow-x: hidden;
       cursor: none
     }
 
@@ -200,7 +206,9 @@
       align-items: center;
       justify-content: space-between;
       transition: background .4s, border-color .4s;
-      border-bottom: 1px solid transparent
+      border-bottom: 1px solid transparent;
+      box-sizing: border-box;
+      width: 100%
     }
 
     nav.scrolled {
@@ -3073,10 +3081,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: top .7s cubic-bezier(.76, 0, .24, 1)
+      pointer-events: none;
+      transition: top .7s cubic-bezier(.76, 0, .24, 1);
+      visibility: hidden;
+      display: none
     }
 
     #page-transition.slide-up {
+      display: block;
+      visibility: visible;
       top: 0
     }
 
@@ -6108,7 +6121,11 @@
         const textEl = document.getElementById('transition-text');
         textEl.textContent = titles[id] || id;
         textEl.classList.remove('show');
-        matte.classList.add('slide-up');
+        matte.style.display = 'block';
+        setTimeout(() => {
+          matte.style.visibility = 'visible';
+          matte.classList.add('slide-up');
+        }, 10);
         setTimeout(() => textEl.classList.add('show'), 600);
         setTimeout(() => {
           textEl.classList.remove('show');
@@ -6119,7 +6136,11 @@
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.page === id));
             setTimeout(() => { initReveal(); bindHover(); initTilt(); initMag(); initScramble(); updateScrollHint(); }, 60);
             matte.classList.remove('slide-up');
-            setTimeout(() => isTransitioning = false, 700);
+            setTimeout(() => {
+              matte.style.visibility = 'hidden';
+              matte.style.display = 'none';
+              isTransitioning = false;
+            }, 700);
           }, 400);
         }, 1600);
       };
