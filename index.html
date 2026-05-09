@@ -100,8 +100,7 @@
       scroll-behavior: smooth
     }
 
-    html,
-    body {
+    html, body {
       overflow-x: hidden;
       max-width: 100%;
       position: relative;
@@ -119,45 +118,14 @@
 
     /* Restore normal cursor on genuine touch-only devices */
     @media (hover: none) and (pointer: coarse) {
-      body {
-        cursor: auto
-      }
-
-      #cur,
-      #cur-ring {
-        display: none
-      }
-
-      a,
-      button,
-      [onclick],
-      .btn-p,
-      .btn-g,
-      .btn-dark,
-      .btn-outline,
-      .nav-cta,
-      .wcard,
-      .wfcard,
-      .tcard,
-      .svc-row,
-      .pstep,
-      .cs-mockup,
-      .cs-gallery-item,
-      .mega-item,
-      .drawer-cta,
-      .form-submit,
-      .slider-arrow,
-      .post-masonry-item,
-      .reel-item,
-      .about-contact-link,
-      .about-gallery-item,
-      .contact-link,
-      .social-link-row,
-      .cs-del,
-      .nav-hamburger,
-      .nav-logo,
-      .drawer-nav li a,
-      .drawer-nav li button {
+      body { cursor: auto }
+      #cur, #cur-ring { display: none }
+      a, button, [onclick], .btn-p, .btn-g, .btn-dark, .btn-outline,
+      .nav-cta, .wcard, .wfcard, .tcard, .svc-row, .pstep, .cs-mockup,
+      .cs-gallery-item, .mega-item, .drawer-cta, .form-submit,
+      .slider-arrow, .post-masonry-item, .reel-item, .about-contact-link,
+      .about-gallery-item, .contact-link, .social-link-row, .cs-del,
+      .nav-hamburger, .nav-logo, .drawer-nav li a, .drawer-nav li button {
         cursor: auto
       }
     }
@@ -3796,10 +3764,13 @@
       #mobile-drawer {
         padding: 80px 24px 40px
       }
-
+      
       /* PAGE TRANSITION TEXT SCALING FOR MOBILE */
       #transition-text {
-        font-size: clamp(24px, 8vw, 36px);
+        font-size: clamp(16px, 6vw, 26px);
+        text-align: center;
+        padding: 0 16px;
+        word-break: break-word;
       }
     }
 
@@ -4344,8 +4315,7 @@
       <li><a onclick="closeDrawer(); showPage('contact')" style="cursor:none">Contact</a></li>
     </ul>
     <div class="drawer-bottom">
-      <a class="drawer-cta drawer-cta-primary" href="https://wa.link/ogvuj4" target="_blank" onclick="closeDrawer()"
-        style="cursor:none">Hire Me
+      <a class="drawer-cta drawer-cta-primary" href="https://wa.link/ogvuj4" target="_blank" onclick="closeDrawer()" style="cursor:none">Hire Me
         →</a>
       <a class="drawer-cta drawer-cta-secondary" onclick="closeDrawer(); toggleTheme()" style="cursor:none">Toggle
         Theme</a>
@@ -5731,88 +5701,53 @@
       <div class="post-slider" id="post-slider">
         <!-- PANEL 1: 516Mall, ACT3, Alluora (Part 1) -->
         <div class="post-masonry-panel">
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (1).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (2).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (3).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (4).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (5).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (6).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (7).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (8).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (9).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (10).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (11).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (12).png" alt="Social Post">
-          </div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (1).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (2).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (3).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (4).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (5).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (6).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (7).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (8).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (9).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (10).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (11).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/516Mall (12).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/ACT3 (1).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/ACT3 (2).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/ACT3 (3).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/ACT3 (4).png" alt="Social Post"></div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (1).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (2).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (3).png" alt="Social Post">
-          </div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (1).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (2).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (3).png" alt="Social Post"></div>
         </div>
 
         <!-- PANEL 2: Alluora (Part 2), Canadian Pizza, CurtnCo, FunClaw (Part 1) -->
         <div class="post-masonry-panel">
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (4).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (5).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (6).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (1).png"
-              alt="Social Post"></div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (2).png"
-              alt="Social Post"></div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (3).png"
-              alt="Social Post"></div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (4).png"
-              alt="Social Post"></div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (5).png"
-              alt="Social Post"></div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (6).png"
-              alt="Social Post"></div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/CurtnCo (1).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/CurtnCo (2).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/CurtnCo (3).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/CurtnCo (4).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/CurtnCo (5).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (1).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (2).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (3).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (4).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (5).png" alt="Social Post">
-          </div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (4).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (5).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Alluora (6).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (1).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (2).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (3).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (4).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (5).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Canadian Pizza (6).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/CurtnCo (1).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/CurtnCo (2).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/CurtnCo (3).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/CurtnCo (4).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/CurtnCo (5).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (1).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (2).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (3).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (4).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (5).png" alt="Social Post"></div>
         </div>
 
         <!-- PANEL 3: FunClaw (Part 2), GWA, Jewon (Part 1) -->
         <div class="post-masonry-panel">
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (6).png" alt="Social Post">
-          </div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/FunClaw (6).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/GWA (1).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/GWA (2).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/GWA (3).png" alt="Social Post"></div>
@@ -5840,24 +5775,15 @@
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Jewon (18).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Jewon (19).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Jewon (20).png" alt="Social Post"></div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Kaleidoskope (1).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Kaleidoskope (2).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Kaleidoskope (3).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Kaleidoskope (4).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Kaleidoskope.png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Screenshot 2026-04-27 210414.png"
-              alt="Social Post"></div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Store Motie (1).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Store Motie (2).png" alt="Social Post">
-          </div>
-          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Store Motie (3).png" alt="Social Post">
-          </div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Kaleidoskope (1).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Kaleidoskope (2).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Kaleidoskope (3).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Kaleidoskope (4).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Kaleidoskope.png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Screenshot 2026-04-27 210414.png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Store Motie (1).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Store Motie (2).png" alt="Social Post"></div>
+          <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Store Motie (3).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Vplus (1).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Vplus (2).png" alt="Social Post"></div>
           <div class="post-masonry-item"><img src="Gallery/Gallery/Social Media/Vplus (3).png" alt="Social Post"></div>
